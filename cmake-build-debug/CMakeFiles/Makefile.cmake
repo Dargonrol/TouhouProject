@@ -45,6 +45,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.28.1/CMakeRCCompiler.cmake"
   "CMakeFiles/3.28.1/CMakeSystem.cmake"
   "X:/user/programming/projects/projects/TouhouProject/cmake/modules/FindSDL2.cmake"
+  "X:/user/programming/projects/projects/TouhouProject/cmake/modules/FindSDL2_image.cmake"
   )
 
 # The corresponding makefile is:

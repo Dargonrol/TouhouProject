@@ -94,6 +94,7 @@ TouhouProject.exe: CMakeFiles/TouhouProject.dir/main.cpp.obj
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/build.make
 TouhouProject.exe: X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a
 TouhouProject.exe: X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a
+TouhouProject.exe: X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/lib/libSDL2_image.dll.a
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/linkLibs.rsp
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/objects1.rsp
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/link.txt
