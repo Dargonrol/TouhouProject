@@ -4,7 +4,12 @@ add_definitions(-DPROJECT_NAME="${PROJECT_NAME}")
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp
+        core/GameEngine.h
+        core/GameEngine.cpp
+        core/StateManager.cpp
+        core/StateManager.h
+)
 
 # --- SDL2 SETUP ---
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)

@@ -188,4 +188,6 @@ CMakeFiles/TouhouProject.dir/main.cpp.obj: \
  X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_timer.h \
  X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_version.h \
  X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_locale.h \
- X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_misc.h
+ X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_misc.h \
+ X:\user\programming\projects\projects\TouhouProject\core/GameEngine.h \
+ X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_render.h
