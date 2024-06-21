@@ -20,6 +20,7 @@ public:
 private:
     EventManager& eventManager;
     SceneManager& sceneManager;
+    StateManager& stateManager;
 
     struct {
         int width = 800;

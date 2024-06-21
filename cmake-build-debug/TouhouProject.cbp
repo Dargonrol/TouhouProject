@@ -101,6 +101,9 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/SceneManager.h">
 			<Option target="TouhouProject"/>
 		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.cpp">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.h">
 			<Option target="TouhouProject"/>
 		</Unit>
@@ -110,7 +113,7 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/Scene.h">
 			<Option target="TouhouProject"/>
 		</Unit>
-		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/settingsMenuScene.h">
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/SettingsMenuScene.h">
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/main.cpp">

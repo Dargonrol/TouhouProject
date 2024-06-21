@@ -176,6 +176,30 @@ core/GameEngine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.s
 .PHONY : core/GameEngine.cpp.s
 
+core/StateManager.obj: core/StateManager.cpp.obj
+.PHONY : core/StateManager.obj
+
+# target to build an object file
+core/StateManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj
+.PHONY : core/StateManager.cpp.obj
+
+core/StateManager.i: core/StateManager.cpp.i
+.PHONY : core/StateManager.i
+
+# target to preprocess a source file
+core/StateManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/StateManager.cpp.i
+.PHONY : core/StateManager.cpp.i
+
+core/StateManager.s: core/StateManager.cpp.s
+.PHONY : core/StateManager.s
+
+# target to generate assembly for a file
+core/StateManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/StateManager.cpp.s
+.PHONY : core/StateManager.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -215,6 +239,9 @@ help:
 	@echo ... core/GameEngine.obj
 	@echo ... core/GameEngine.i
 	@echo ... core/GameEngine.s
+	@echo ... core/StateManager.obj
+	@echo ... core/StateManager.i
+	@echo ... core/StateManager.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -6,8 +6,9 @@
 #define SCENEMANAGER_H
 #include <deque>
 
+#include "scenes/MainMenuScene.h"
 #include "scenes/Scene.h"
-#include <string>
+#include "scenes/SettingsMenuScene.h"
 
 class SceneManager {
 private:
@@ -38,9 +39,39 @@ public:
         sceneQueue.push_back(scene);
     }
 
+    void pushScene(SceneID sceneID) {
+        switch (sceneID) {
+            case MAIN_MENU_SCENE:
+                sceneQueue.push_back(new MainMenuScene(renderer, window));
+                break;
+            case SETTINGS_MENU_SCENE:
+                sceneQueue.push_back(new SettingsMenuScene(renderer, window));
+                break;
+            case GAMEPLAY_SCENE:
+                //sceneQueue.push_back(new GameplayScene(renderer, window));
+                break;
+            case PAUSE_SCENE:
+                //sceneQueue.push_back(new PauseScene(renderer, window));
+                break;
+            case GAME_OVER_SCENE:
+                //sceneQueue.push_back(new GameOverScene(renderer, window));
+                break;
+            default:
+                break;
+        }
+    }
+
     int popScene() {
         sceneQueue.pop_front();
         return sceneQueue.back()->getID();;
+    }
+
+    void changeScene(SceneID sceneID) {
+        for (Scene* scene : sceneQueue) {
+            delete scene;
+        }
+        sceneQueue.clear();
+        pushScene(sceneID);
     }
 
 

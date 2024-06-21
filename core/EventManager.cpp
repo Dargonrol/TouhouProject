@@ -5,6 +5,8 @@
 #include "EventManager.h"
 #include <SDL.h>
 
+#include "SceneManager.h"
+
 EventManager::EventManager() {}
 EventManager::EventManager(EventManager const &copy) {}
 EventManager &EventManager::operator=(EventManager const &copy) { return *this; }
@@ -21,6 +23,10 @@ void EventManager::handleEvents() {
         switch (event.type) {
             case SDL_QUIT:
                 running = false;
+                break;
+
+            default:
+                SceneManager::getInstance().getCurrentScene()->handleEvents(event);
                 break;
         }
 

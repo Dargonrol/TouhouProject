@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj.d"
   "CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj"
   "CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj.d"
+  "CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj"
+  "CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj.d"
   "CMakeFiles/TouhouProject.dir/main.cpp.obj"
   "CMakeFiles/TouhouProject.dir/main.cpp.obj.d"
   "TouhouProject.exe"

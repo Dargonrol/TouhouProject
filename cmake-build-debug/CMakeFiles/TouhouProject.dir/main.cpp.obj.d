@@ -360,4 +360,9 @@ CMakeFiles/TouhouProject.dir/main.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/deque \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_deque.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/deque.tcc \
- X:\user\programming\projects\projects\TouhouProject\core/scenes/Scene.h
+ X:\user\programming\projects\projects\TouhouProject\core/scenes/MainMenuScene.h \
+ X:\user\programming\projects\projects\TouhouProject\core/scenes/Scene.h \
+ X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
+ X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
+ X:\user\programming\projects\projects\TouhouProject\core/scenes/Scene.h \
+ X:\user\programming\projects\projects\TouhouProject\core/scenes/SettingsMenuScene.h

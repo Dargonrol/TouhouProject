@@ -14,10 +14,18 @@ enum GameState {
 };
 
 class StateManager {
-public:
-    int gameState;
-
 private:
+    StateManager();
+    StateManager(StateManager const& copy);
+    StateManager& operator=(StateManager const& copy);
+
+    int gameState = MAIN_MENU;
+
+public:
+    static StateManager& getInstance();
+    void changeStateRequest(GameState state);
+
+    int getState();
 
 };
 

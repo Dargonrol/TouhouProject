@@ -12,7 +12,7 @@
 #include "scenes/MainMenuScene.h"
 #include "scenes/SettingsMenuScene.h"
 
-GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()) {
+GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) {
     SDL_Log("Init SDL...");
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Log("SDL initialized.");
@@ -79,11 +79,6 @@ GameEngine::~GameEngine() {
 
 
 void GameEngine::run() {
-    Scene* mainMenuScene = new MainMenuScene(renderer, window);
-    Scene* settingsMenuScene = new SettingsMenuScene(renderer, window);
-    SceneManager::getInstance().pushScene(mainMenuScene);
-    SceneManager::getInstance().pushScene(settingsMenuScene);
-
     // for calculating framerate etc.
     Uint64 frameStart;
     Uint64 frameTime = 0;
@@ -94,6 +89,10 @@ void GameEngine::run() {
     auto frameStart2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::micro> frameTime2{};
     Uint32 i = 0;
+
+
+    StateManager::getInstance().changeStateRequest(MAIN_MENU);
+
 
     while (eventManager.running) {
         frameStart = SDL_GetTicks();
@@ -119,7 +118,7 @@ void GameEngine::run() {
         // for measuring average frame time for statistics
         if (i == 1000000) {
             avgSubFrameTime = subFrameSum / 1000000.0;
-            SDL_Log("Average Frame Time: %f microseconds", avgSubFrameTime);
+            //SDL_Log("Average Frame Time: %f microseconds", avgSubFrameTime);
             i = 0;
             subFrameSum = std::chrono::duration<double, std::micro>{};
         }
@@ -128,8 +127,6 @@ void GameEngine::run() {
 
     SDL_Log("Quitting...");
     //GameEngine::~GameEngine(); gets called automatically
-
-    delete mainMenuScene;
 }
 
 void GameEngine::setFPS(int fps) {

@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "X:/user/programming/projects/projects/TouhouProject/core/EventManager.cpp" "CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/core/GameEngine.cpp" "CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj.d"
+  "X:/user/programming/projects/projects/TouhouProject/core/StateManager.cpp" "CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/main.cpp" "CMakeFiles/TouhouProject.dir/main.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/main.cpp.obj.d"
   )
 
