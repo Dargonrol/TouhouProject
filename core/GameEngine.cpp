@@ -5,6 +5,10 @@
 #include <SDL.h>
 #include <stdexcept>
 #include "GameEngine.h"
+
+#include <chrono>
+#include <ratio>
+
 #include "scenes/MainMenuScene.h"
 #include "scenes/SettingsMenuScene.h"
 
@@ -55,14 +59,14 @@ GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManag
     }
     SDL_Log("Renderer created.");
 
-    SDL_DisableScreenSaver();
     SDL_Log("Current Video Driver: %s", SDL_GetCurrentVideoDriver());
 
-    SDL_Log("setting SceneManager...");
+    SDL_Log("setting up SceneManager...");
     SceneManager::setRenderer(renderer);
     SceneManager::setWindow(window);
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_DisableScreenSaver();
 }
 
 GameEngine::~GameEngine() {
@@ -80,14 +84,55 @@ void GameEngine::run() {
     SceneManager::getInstance().pushScene(mainMenuScene);
     SceneManager::getInstance().pushScene(settingsMenuScene);
 
+    // for calculating framerate etc.
+    Uint64 frameStart;
+    Uint64 frameTime = 0;
+    Uint16 lastRenderTime = 0;
+    std::chrono::duration<double, std::micro> subFrameSum{};
+
+    // for measuring average frame time for statistics
+    auto frameStart2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::micro> frameTime2{};
+    Uint32 i = 0;
+
     while (eventManager.running) {
+        frameStart = SDL_GetTicks();
+
+        // for measuring average frame time for statistics
+        frameStart2 = std::chrono::high_resolution_clock::now();
+
         eventManager.handleEvents();
-        sceneManager.updateSceneQueue();
-        sceneManager.renderSceneQueue();
+
+        if (lastRenderTime >= frameDelay) {
+            sceneManager.updateSceneQueue();
+            sceneManager.renderSceneQueue();
+            lastRenderTime = 0;
+        } else {
+            lastRenderTime += frameTime;
+        }
+        frameTime = SDL_GetTicks() - frameStart;
+
+        // calculate average frame time for statistics
+        frameTime2 = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - frameStart2);
+        subFrameSum += frameTime2;
+
+        // for measuring average frame time for statistics
+        if (i == 1000000) {
+            avgSubFrameTime = subFrameSum / 1000000.0;
+            SDL_Log("Average Frame Time: %f microseconds", avgSubFrameTime);
+            i = 0;
+            subFrameSum = std::chrono::duration<double, std::micro>{};
+        }
+        i++;
     }
 
     SDL_Log("Quitting...");
-    GameEngine::~GameEngine();
+    //GameEngine::~GameEngine(); gets called automatically
 
     delete mainMenuScene;
+}
+
+void GameEngine::setFPS(int fps) {
+    FPS = fps;
+    frameDelay = 1000 / FPS;
 }

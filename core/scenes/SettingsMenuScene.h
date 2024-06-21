@@ -12,17 +12,21 @@ public:
     SettingsMenuScene(SDL_Renderer* renderer, SDL_Window* window) {
         setID(SETTINGS_MENU);
     };
+    int i = 0;
+
     void update(SDL_Renderer* renderer) override {
         //SDL_SetRenderDrawColor(renderer, 100, 100, 0, 100); // Set the background color to purple
         SDL_Rect rect;
-        rect.x = 50;  // the x coordinate
-        rect.y = 50;  // the y coordinate
+        rect.x = i;  // the x coordinate
+        rect.y = i;  // the y coordinate
         rect.w = 50; // the width of the rectangle
         rect.h = 50; // the height of the rectangle
         // Set the color to red
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 100);
         // Fill the rectangle
         SDL_RenderFillRect(renderer, &rect);
+
+        i++;
     }
 };
 
