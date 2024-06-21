@@ -5,6 +5,14 @@
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
 
+enum GameState {
+    MAIN_MENU,
+    SETTINGS_MENU,
+    GAMEPLAY,
+    PAUSE,
+    GAME_OVER
+};
+
 class StateManager {
 public:
     int gameState;

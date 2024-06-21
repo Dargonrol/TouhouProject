@@ -13,6 +13,7 @@ add_executable(${PROJECT_NAME} main.cpp
         core/scenes/MainMenuScene.h
         core/EventManager.cpp
         core/EventManager.h
+        core/scenes/settingsMenuScene.h
 )
 
 # --- SDL2 SETUP ---

@@ -6,21 +6,26 @@
 #define SCENE_H
 #include <SDL.h>
 
+enum SceneID {
+    MAIN_MENU,
+    SETTINGS_MENU,
+    GAMEPLAY,
+    PAUSE,
+    GAME_OVER,
+    UNVALID = -1
+};
+
 class Scene {
 public:
-    virtual int getID() {
+    virtual SceneID getID() {
         return ID;
     }
-    virtual void setID(int id) {
+    virtual void setID(SceneID id) {
         ID = id;
     }
     virtual void update(SDL_Renderer* renderer) = 0;
-    virtual void render(SDL_Renderer* renderer) {
-        SDL_RenderClear(renderer); // Clear the screen
-        SDL_RenderPresent(renderer); // Update the screen
-    }
 
-protected:
-    int ID = -1;
+private:
+    SceneID ID = UNVALID;
 };
 #endif //SCENE_H

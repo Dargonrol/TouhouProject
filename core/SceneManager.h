@@ -4,13 +4,15 @@
 
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
-#include <stack>
+#include <deque>
 
 #include "scenes/Scene.h"
+#include <string>
 
 class SceneManager {
 private:
-    std::stack<Scene*> sceneStack;
+    std::deque<Scene*> sceneQueue;
+
     SDL_Renderer* renderer;
     SDL_Window* window;
 
@@ -33,32 +35,33 @@ public:
     }
 
     void pushScene(Scene* scene) {
-        sceneStack.push(scene);
+        sceneQueue.push_back(scene);
     }
 
     int popScene() {
-        sceneStack.pop();
-        return sceneStack.top()->getID();;
+        sceneQueue.pop_front();
+        return sceneQueue.back()->getID();;
     }
 
 
-    void updateCurrentScene() {
+    void updateSceneQueue() {
         if (SceneManager::isEmpty()) {
-            SDL_LogError(1, "Cannot update scene, stack is empty!");
+            SDL_LogError(1, "Cannot update scene, queue is empty!");
             return;
         }
-        sceneStack.top()->update(this->renderer);
-    }
-
-    void renderCurrentScene() {
-        if (SceneManager::isEmpty()) {
-            SDL_LogError(1, "Cannot render scene, stack is empty!");
-            return;
+        SDL_SetRenderDrawColor(renderer, 10, 10, 10, 255);
+        SDL_RenderClear(renderer);
+        for (Scene* scene : sceneQueue) {
+            //SDL_Log(std::to_string(scene->getID()).c_str());
+            scene->update(this->renderer);
         }
-        sceneStack.top()->render(this->renderer);
     }
 
-    Scene* getCurrentScene() { return sceneStack.top(); }
-    bool isEmpty() { return sceneStack.empty(); }
+    void renderSceneQueue() {
+        SDL_RenderPresent(renderer); // Update the screen
+    }
+
+    Scene* getCurrentScene() { return sceneQueue.back(); }
+    bool isEmpty() { return sceneQueue.empty(); }
 };
 #endif //SCENEMANAGER_H

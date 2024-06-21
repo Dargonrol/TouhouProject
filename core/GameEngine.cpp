@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include "GameEngine.h"
 #include "scenes/MainMenuScene.h"
+#include "scenes/SettingsMenuScene.h"
 
 GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()) {
     SDL_Log("Init SDL...");
@@ -60,6 +61,8 @@ GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManag
     SDL_Log("setting SceneManager...");
     SceneManager::setRenderer(renderer);
     SceneManager::setWindow(window);
+
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 }
 
 GameEngine::~GameEngine() {
@@ -73,12 +76,14 @@ GameEngine::~GameEngine() {
 
 void GameEngine::run() {
     Scene* mainMenuScene = new MainMenuScene(renderer, window);
+    Scene* settingsMenuScene = new SettingsMenuScene(renderer, window);
     SceneManager::getInstance().pushScene(mainMenuScene);
+    SceneManager::getInstance().pushScene(settingsMenuScene);
 
     while (eventManager.running) {
         eventManager.handleEvents();
-        sceneManager.updateCurrentScene();
-        sceneManager.renderCurrentScene();
+        sceneManager.updateSceneQueue();
+        sceneManager.renderSceneQueue();
     }
 
     SDL_Log("Quitting...");

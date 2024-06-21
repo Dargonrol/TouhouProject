@@ -110,6 +110,9 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/Scene.h">
 			<Option target="TouhouProject"/>
 		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/settingsMenuScene.h">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/main.cpp">
 			<Option target="TouhouProject"/>
 		</Unit>
