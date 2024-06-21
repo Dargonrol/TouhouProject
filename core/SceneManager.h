@@ -14,10 +14,22 @@ private:
     SDL_Renderer* renderer;
     SDL_Window* window;
 
+    SceneManager() {}
+    SceneManager(SceneManager const& copy) {}
+    SceneManager& operator=(SceneManager const& copy) { return *this; }
+
 public:
-    SceneManager(SDL_Renderer* renderer, SDL_Window* window) {
-        this->renderer = renderer;
-        this->window = window;
+    static SceneManager& getInstance() {
+        static SceneManager instance;
+        return instance;
+    }
+
+    static void setWindow(SDL_Window* window) {
+        getInstance().window = window;
+    }
+
+    static void setRenderer(SDL_Renderer* renderer) {
+        getInstance().renderer = renderer;
     }
 
     void pushScene(Scene* scene) {

@@ -191,6 +191,7 @@ CMakeFiles/TouhouProject.dir/main.cpp.obj: \
  X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_misc.h \
  X:\user\programming\projects\projects\TouhouProject\core/GameEngine.h \
  X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_render.h \
+ X:\user\programming\projects\projects\TouhouProject\core/EventManager.h \
  X:\user\programming\projects\projects\TouhouProject\core/SceneManager.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/stack \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/requires_hosted.h \
@@ -246,6 +247,4 @@ CMakeFiles/TouhouProject.dir/main.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/max_size_type.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/numbers \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_stack.h \
- X:\user\programming\projects\projects\TouhouProject\core/scenes/Scene.h \
- X:\user\programming\projects\projects\TouhouProject\core/scenes/MainMenuScene.h \
  X:\user\programming\projects\projects\TouhouProject\core/scenes/Scene.h

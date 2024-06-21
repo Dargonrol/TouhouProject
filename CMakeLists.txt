@@ -7,11 +7,12 @@ set(CMAKE_CXX_STANDARD 26)
 add_executable(${PROJECT_NAME} main.cpp
         core/GameEngine.h
         core/GameEngine.cpp
-        core/StateManager.cpp
         core/StateManager.h
         core/SceneManager.h
         core/scenes/Scene.h
         core/scenes/MainMenuScene.h
+        core/EventManager.cpp
+        core/EventManager.h
 )
 
 # --- SDL2 SETUP ---

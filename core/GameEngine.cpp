@@ -2,11 +2,12 @@
 // Created by dargonrol on 6/20/2024.
 //
 
-#include "GameEngine.h"
 #include <SDL.h>
 #include <stdexcept>
+#include "GameEngine.h"
+#include "scenes/MainMenuScene.h"
 
-GameEngine::GameEngine() : sceneManager(nullptr, nullptr){
+GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()) {
     SDL_Log("Init SDL...");
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Log("SDL initialized.");
@@ -56,10 +57,13 @@ GameEngine::GameEngine() : sceneManager(nullptr, nullptr){
     SDL_DisableScreenSaver();
     SDL_Log("Current Video Driver: %s", SDL_GetCurrentVideoDriver());
 
-    sceneManager = SceneManager(renderer, window);
+    SDL_Log("setting SceneManager...");
+    SceneManager::setRenderer(renderer);
+    SceneManager::setWindow(window);
 }
 
 GameEngine::~GameEngine() {
+    SDL_Log("cleaning up");
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
@@ -69,30 +73,16 @@ GameEngine::~GameEngine() {
 
 void GameEngine::run() {
     Scene* mainMenuScene = new MainMenuScene(renderer, window);
-    this->sceneManager.pushScene(mainMenuScene);
+    SceneManager::getInstance().pushScene(mainMenuScene);
 
-    bool running = true;
-    while (running) {
-        running = eventHandler();
+    while (eventManager.running) {
+        eventManager.handleEvents();
         sceneManager.updateCurrentScene();
         sceneManager.renderCurrentScene();
     }
 
+    SDL_Log("Quitting...");
+    GameEngine::~GameEngine();
+
     delete mainMenuScene;
 }
-
-bool GameEngine::eventHandler() const {
-    SDL_Event event;
-
-    while (SDL_PollEvent(&event)) {
-        switch (event.type) {
-            case SDL_QUIT:
-                SDL_Log("Quit event detected.");
-                GameEngine::~GameEngine();
-                return false;
-        }
-
-    }
-    return true;
-}
-

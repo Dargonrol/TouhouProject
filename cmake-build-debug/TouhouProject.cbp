@@ -86,6 +86,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/EventManager.cpp">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/EventManager.h">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/GameEngine.cpp">
 			<Option target="TouhouProject"/>
 		</Unit>
@@ -93,9 +99,6 @@
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/SceneManager.h">
-			<Option target="TouhouProject"/>
-		</Unit>
-		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.cpp">
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.h">

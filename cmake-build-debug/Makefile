@@ -128,6 +128,30 @@ TouhouProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/build
 .PHONY : TouhouProject/fast
 
+core/EventManager.obj: core/EventManager.cpp.obj
+.PHONY : core/EventManager.obj
+
+# target to build an object file
+core/EventManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj
+.PHONY : core/EventManager.cpp.obj
+
+core/EventManager.i: core/EventManager.cpp.i
+.PHONY : core/EventManager.i
+
+# target to preprocess a source file
+core/EventManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/EventManager.cpp.i
+.PHONY : core/EventManager.cpp.i
+
+core/EventManager.s: core/EventManager.cpp.s
+.PHONY : core/EventManager.s
+
+# target to generate assembly for a file
+core/EventManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/EventManager.cpp.s
+.PHONY : core/EventManager.cpp.s
+
 core/GameEngine.obj: core/GameEngine.cpp.obj
 .PHONY : core/GameEngine.obj
 
@@ -151,30 +175,6 @@ core/GameEngine.s: core/GameEngine.cpp.s
 core/GameEngine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.s
 .PHONY : core/GameEngine.cpp.s
-
-core/StateManager.obj: core/StateManager.cpp.obj
-.PHONY : core/StateManager.obj
-
-# target to build an object file
-core/StateManager.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj
-.PHONY : core/StateManager.cpp.obj
-
-core/StateManager.i: core/StateManager.cpp.i
-.PHONY : core/StateManager.i
-
-# target to preprocess a source file
-core/StateManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/StateManager.cpp.i
-.PHONY : core/StateManager.cpp.i
-
-core/StateManager.s: core/StateManager.cpp.s
-.PHONY : core/StateManager.s
-
-# target to generate assembly for a file
-core/StateManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/StateManager.cpp.s
-.PHONY : core/StateManager.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -209,12 +209,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... TouhouProject
+	@echo ... core/EventManager.obj
+	@echo ... core/EventManager.i
+	@echo ... core/EventManager.s
 	@echo ... core/GameEngine.obj
 	@echo ... core/GameEngine.i
 	@echo ... core/GameEngine.s
-	@echo ... core/StateManager.obj
-	@echo ... core/StateManager.i
-	@echo ... core/StateManager.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
