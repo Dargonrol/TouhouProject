@@ -4,31 +4,27 @@
 
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
-#include <chrono>
-#include <SDL_render.h>
 
+#include <chrono>
 #include "EventManager.h"
 #include "SceneManager.h"
 
 class GameEngine {
 public:
-    GameEngine();
+    static GameEngine& getInstance();
     ~GameEngine();
     void run();
+    void init();
     void setFPS(int fps);
 
 private:
+    GameEngine();
+    GameEngine(GameEngine const& copy);
+    GameEngine& operator=(GameEngine const& copy);
+
     EventManager& eventManager;
     SceneManager& sceneManager;
     StateManager& stateManager;
-
-    struct {
-        int width = 800;
-        int height = 600;
-    } resolution;
-
-    SDL_Renderer* renderer;
-    SDL_Window* window;
 
     int FPS = 60;
     int frameDelay = 1000 / FPS;

@@ -98,6 +98,9 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/GameEngine.h">
 			<Option target="TouhouProject"/>
 		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/SceneManager.h">
 			<Option target="TouhouProject"/>
 		</Unit>

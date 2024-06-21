@@ -15,6 +15,7 @@ add_executable(${PROJECT_NAME} main.cpp
         core/EventManager.h
         core/scenes/settingsMenuScene.h
         core/StateManager.cpp
+        core/GameProperties.h
 )
 
 # --- SDL2 SETUP ---

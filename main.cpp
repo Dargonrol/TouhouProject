@@ -6,7 +6,7 @@
 #endif
 
 int main(int argc, char* args []) {
-GameEngine gameEngine;
-    gameEngine.run();
+    GameEngine::getInstance().init();
+    GameEngine::getInstance().run();
     return 0;
 }

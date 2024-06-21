@@ -62,6 +62,7 @@ public:
     }
 
     int popScene() {
+        delete sceneQueue.front();
         sceneQueue.pop_front();
         return sceneQueue.back()->getID();;
     }

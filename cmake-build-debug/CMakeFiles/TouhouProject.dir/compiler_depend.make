@@ -275,6 +275,7 @@ CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj: X:/user/programming/proj
   X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/begin_code.h \
   X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/close_code.h \
   X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
+  X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h \
   X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/SceneManager.h \
@@ -640,10 +641,12 @@ CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj: X:/user/programming/projec
   X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/begin_code.h \
   X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/close_code.h \
   X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
+  X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h \
   X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/GameEngine.h \
   X:/user/programming/projects/projects/TouhouProject/core/SceneManager.h \
+  X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/scenes/MainMenuScene.h \
   X:/user/programming/projects/projects/TouhouProject/core/scenes/Scene.h \
   X:/user/programming/projects/projects/TouhouProject/core/scenes/SettingsMenuScene.h
@@ -922,6 +925,7 @@ CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj: X:/user/programming/proj
   X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/begin_code.h \
   X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/close_code.h \
   X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
+  X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h \
   X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/SceneManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
@@ -1287,6 +1291,7 @@ CMakeFiles/TouhouProject.dir/main.cpp.obj: X:/user/programming/projects/projects
   X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/begin_code.h \
   X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/close_code.h \
   X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
+  X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h \
   X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
   X:/user/programming/projects/projects/TouhouProject/core/GameEngine.h \
@@ -1929,6 +1934,8 @@ X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/incl
 X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/close_code.h:
 
 X:/user/programming/projects/projects/TouhouProject/core/EventManager.h:
+
+X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h:
 
 X:/user/programming/projects/projects/TouhouProject/main.cpp:
 

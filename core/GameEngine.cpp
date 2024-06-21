@@ -5,14 +5,13 @@
 #include <SDL.h>
 #include <stdexcept>
 #include "GameEngine.h"
+#include "SceneManager.h"
+#include "StateManager.h"
+#include "EventManager.h"
 
 #include <chrono>
-#include <ratio>
 
-#include "scenes/MainMenuScene.h"
-#include "scenes/SettingsMenuScene.h"
-
-GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) {
+void GameEngine::init() {
     SDL_Log("Init SDL...");
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Log("SDL initialized.");
@@ -23,37 +22,37 @@ GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManag
     if (SDL_GetDesktopDisplayMode(0, &displayMode) != 0) {
         SDL_LogCritical(1, "SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
         SDL_Log("setting default resolution to default: 800x600");
-        resolution.height = 600;
-        resolution.width = 800;
+        properties.resolution.height = 600;
+        properties.resolution.width = 800;
     }
     else {
-        resolution.height = displayMode.h / 2;
-        resolution.width = displayMode.w / 2;
-        SDL_Log("setting resolution to %dx%d", resolution.width, resolution.height);
+        properties.resolution.height = displayMode.h / 2;
+        properties.resolution.width = displayMode.w / 2;
+        SDL_Log("setting resolution to %dx%d", properties.resolution.width, properties.resolution.height);
     }
 
     SDL_Log("creating window...");
-    window = SDL_CreateWindow(
+    properties.app.window = SDL_CreateWindow(
         PROJECT_NAME,
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        resolution.width,
-        resolution.height,
+        properties.resolution.width,
+        properties.resolution.height,
         SDL_WINDOW_SHOWN
         );
 
-    if (window == nullptr) {
+    if (properties.app.window == nullptr) {
         SDL_LogCritical(1, "Failed to create window: %s", SDL_GetError());
         throw std::runtime_error("Failed to create window");
     }
     SDL_Log("Window created.");
 
     SDL_Log("creating renderer...");
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    properties.app.renderer = SDL_CreateRenderer(properties.app.window, -1, SDL_RENDERER_ACCELERATED);
 
-    if (renderer == nullptr) {
+    if (properties.app.renderer == nullptr) {
         SDL_LogCritical(1, "Failed to create renderer: %s", SDL_GetError());
-        SDL_DestroyWindow(window);
+        SDL_DestroyWindow(properties.app.window);
         SDL_Quit();
         throw std::runtime_error("Failed to create renderer");
     }
@@ -62,17 +61,17 @@ GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManag
     SDL_Log("Current Video Driver: %s", SDL_GetCurrentVideoDriver());
 
     SDL_Log("setting up SceneManager...");
-    SceneManager::setRenderer(renderer);
-    SceneManager::setWindow(window);
+    SceneManager::setRenderer(properties.app.renderer);
+    SceneManager::setWindow(properties.app.window);
 
-    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawBlendMode(properties.app.renderer, SDL_BLENDMODE_BLEND);
     SDL_DisableScreenSaver();
 }
 
 GameEngine::~GameEngine() {
     SDL_Log("cleaning up");
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(properties.app.renderer);
+    SDL_DestroyWindow(properties.app.window);
     SDL_Quit();
 }
 
@@ -132,4 +131,13 @@ void GameEngine::run() {
 void GameEngine::setFPS(int fps) {
     FPS = fps;
     frameDelay = 1000 / FPS;
+}
+
+GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) { }
+GameEngine::GameEngine(GameEngine const &copy) : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) { }
+GameEngine &GameEngine::operator=(GameEngine const &copy) { return *this; }
+
+GameEngine &GameEngine::getInstance() {
+    static GameEngine instance;
+    return instance;
 }

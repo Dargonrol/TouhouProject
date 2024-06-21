@@ -354,7 +354,6 @@ CMakeFiles/TouhouProject.dir/main.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/span \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/variant \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algobase.h \
- X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/include/SDL2/SDL_render.h \
  X:\user\programming\projects\projects\TouhouProject\core/EventManager.h \
  X:\user\programming\projects\projects\TouhouProject\core/SceneManager.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/deque \
@@ -365,4 +364,5 @@ CMakeFiles/TouhouProject.dir/main.cpp.obj: \
  X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
  X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
  X:\user\programming\projects\projects\TouhouProject\core/scenes/Scene.h \
- X:\user\programming\projects\projects\TouhouProject\core/scenes/SettingsMenuScene.h
+ X:\user\programming\projects\projects\TouhouProject\core/scenes/SettingsMenuScene.h \
+ X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h

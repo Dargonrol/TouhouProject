@@ -1,6 +1,5 @@
 add SDL_mixer?
 add SDL_ttf?
 SDL_INIT init only things we really need
-using stack for menu layering
 writing parser for settings file and save file and maybe replay
 config file to load last resolution etc... on startup

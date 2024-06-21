@@ -24,6 +24,7 @@ private:
 public:
     static StateManager& getInstance();
     void changeStateRequest(GameState state);
+    void returnRequest(); // pop scene from deque
 
     int getState();
 
