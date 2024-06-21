@@ -95,13 +95,14 @@ void GameEngine::run() {
 
     while (eventManager.running) {
         frameStart = SDL_GetTicks();
+        SDL_Delay(properties.mainGameLoopUpdateDelay);
 
         // for measuring average frame time for statistics
         frameStart2 = std::chrono::high_resolution_clock::now();
 
         eventManager.handleEvents();
 
-        if (lastRenderTime >= frameDelay) {
+        if (lastRenderTime >= properties.frameDelay) {
             sceneManager.updateSceneQueue();
             sceneManager.renderSceneQueue();
             lastRenderTime = 0;
@@ -129,8 +130,8 @@ void GameEngine::run() {
 }
 
 void GameEngine::setFPS(int fps) {
-    FPS = fps;
-    frameDelay = 1000 / FPS;
+    properties.FPS = fps;
+    properties.frameDelay = 1000 / fps - properties.mainGameLoopUpdateDelay;
 }
 
 GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) { }

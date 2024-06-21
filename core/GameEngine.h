@@ -26,8 +26,6 @@ private:
     SceneManager& sceneManager;
     StateManager& stateManager;
 
-    int FPS = 60;
-    int frameDelay = 1000 / FPS;
     std::chrono::duration<double, std::micro> avgSubFrameTime = {};
 };
 
