@@ -92,10 +92,19 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/GameEngine.h">
 			<Option target="TouhouProject"/>
 		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/SceneManager.h">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.cpp">
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.h">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/MainMenuScene.h">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/Scene.h">
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/main.cpp">

@@ -9,6 +9,9 @@ add_executable(${PROJECT_NAME} main.cpp
         core/GameEngine.cpp
         core/StateManager.cpp
         core/StateManager.h
+        core/SceneManager.h
+        core/scenes/Scene.h
+        core/scenes/MainMenuScene.h
 )
 
 # --- SDL2 SETUP ---

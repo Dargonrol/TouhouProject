@@ -6,6 +6,9 @@
 #define STATEMANAGER_H
 
 class StateManager {
+public:
+    int gameState;
+
 private:
 
 };

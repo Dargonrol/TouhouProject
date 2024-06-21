@@ -6,7 +6,7 @@
 #include <SDL.h>
 #include <stdexcept>
 
-GameEngine::GameEngine() {
+GameEngine::GameEngine() : sceneManager(nullptr, nullptr){
     SDL_Log("Init SDL...");
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Log("SDL initialized.");
@@ -27,7 +27,7 @@ GameEngine::GameEngine() {
     }
 
     SDL_Log("creating window...");
-    App.window = SDL_CreateWindow(
+    window = SDL_CreateWindow(
         PROJECT_NAME,
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
@@ -36,18 +36,18 @@ GameEngine::GameEngine() {
         SDL_WINDOW_SHOWN
         );
 
-    if (App.window == nullptr) {
+    if (window == nullptr) {
         SDL_LogCritical(1, "Failed to create window: %s", SDL_GetError());
         throw std::runtime_error("Failed to create window");
     }
     SDL_Log("Window created.");
 
     SDL_Log("creating renderer...");
-    App.renderer = SDL_CreateRenderer(App.window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    if (App.renderer == nullptr) {
+    if (renderer == nullptr) {
         SDL_LogCritical(1, "Failed to create renderer: %s", SDL_GetError());
-        SDL_DestroyWindow(App.window);
+        SDL_DestroyWindow(window);
         SDL_Quit();
         throw std::runtime_error("Failed to create renderer");
     }
@@ -55,24 +55,30 @@ GameEngine::GameEngine() {
 
     SDL_DisableScreenSaver();
     SDL_Log("Current Video Driver: %s", SDL_GetCurrentVideoDriver());
+
+    sceneManager = SceneManager(renderer, window);
 }
 
 GameEngine::~GameEngine() {
-    SDL_DestroyRenderer(App.renderer);
-    SDL_DestroyWindow(App.window);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
     SDL_Quit();
 }
 
-void GameEngine::run() const {
-    bool running = true;
-    SDL_Event event;
 
+
+void GameEngine::run() {
+    Scene* mainMenuScene = new MainMenuScene(renderer, window);
+    this->sceneManager.pushScene(mainMenuScene);
+
+    bool running = true;
     while (running) {
         running = eventHandler();
-        SDL_SetRenderDrawColor(App.renderer, 100, 100, 180, 255); // Set the background color to purple
-        SDL_RenderClear(App.renderer);
-        SDL_RenderPresent(App.renderer);
+        sceneManager.updateCurrentScene();
+        sceneManager.renderCurrentScene();
     }
+
+    delete mainMenuScene;
 }
 
 bool GameEngine::eventHandler() const {

@@ -6,22 +6,26 @@
 #define GAMEENGINE_H
 #include <SDL_render.h>
 
+#include "SceneManager.h"
+#include "scenes/Scene.h"
+#include "scenes/MainMenuScene.h"
+
 class GameEngine {
 public:
     GameEngine();
     ~GameEngine();
-    void run() const;
+    void run();
 
-protected:
+private:
+    SceneManager sceneManager;
+
     struct {
         int width = 800;
         int height = 600;
     } resolution;
 
-    struct {
-        SDL_Renderer* renderer;
-        SDL_Window* window;
-    } App;
+    SDL_Renderer* renderer;
+    SDL_Window* window;
 
     bool eventHandler() const;
 
