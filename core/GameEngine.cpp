@@ -3,6 +3,7 @@
 //
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <stdexcept>
 #include "GameEngine.h"
 #include "SceneManager.h"
@@ -10,72 +11,6 @@
 #include "EventManager.h"
 
 #include <chrono>
-
-void GameEngine::init() {
-    SDL_Log("Init SDL...");
-    SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_Log("SDL initialized.");
-
-    SDL_DisplayMode displayMode;
-
-    SDL_Log("fetching display resolution");
-    if (SDL_GetDesktopDisplayMode(0, &displayMode) != 0) {
-        SDL_LogCritical(1, "SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
-        SDL_Log("setting default resolution to default: 800x600");
-        properties.resolution.height = 600;
-        properties.resolution.width = 800;
-    }
-    else {
-        properties.resolution.height = displayMode.h / 2;
-        properties.resolution.width = displayMode.w / 2;
-        SDL_Log("setting resolution to %dx%d", properties.resolution.width, properties.resolution.height);
-    }
-
-    SDL_Log("creating window...");
-    properties.app.window = SDL_CreateWindow(
-        PROJECT_NAME,
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        properties.resolution.width,
-        properties.resolution.height,
-        SDL_WINDOW_SHOWN
-        );
-
-    if (properties.app.window == nullptr) {
-        SDL_LogCritical(1, "Failed to create window: %s", SDL_GetError());
-        throw std::runtime_error("Failed to create window");
-    }
-    SDL_Log("Window created.");
-
-    SDL_Log("creating renderer...");
-    properties.app.renderer = SDL_CreateRenderer(properties.app.window, -1, SDL_RENDERER_ACCELERATED);
-
-    if (properties.app.renderer == nullptr) {
-        SDL_LogCritical(1, "Failed to create renderer: %s", SDL_GetError());
-        SDL_DestroyWindow(properties.app.window);
-        SDL_Quit();
-        throw std::runtime_error("Failed to create renderer");
-    }
-    SDL_Log("Renderer created.");
-
-    SDL_Log("Current Video Driver: %s", SDL_GetCurrentVideoDriver());
-
-    SDL_Log("setting up SceneManager...");
-    SceneManager::setRenderer(properties.app.renderer);
-    SceneManager::setWindow(properties.app.window);
-
-    SDL_SetRenderDrawBlendMode(properties.app.renderer, SDL_BLENDMODE_BLEND);
-    SDL_DisableScreenSaver();
-}
-
-GameEngine::~GameEngine() {
-    SDL_Log("cleaning up");
-    SDL_DestroyRenderer(properties.app.renderer);
-    SDL_DestroyWindow(properties.app.window);
-    SDL_Quit();
-}
-
-
 
 void GameEngine::run() {
     // for calculating framerate etc.
@@ -134,6 +69,71 @@ void GameEngine::setFPS(int fps) {
     properties.frameDelay = 1000 / fps - properties.mainGameLoopUpdateDelay;
 }
 
+void GameEngine::init() {
+    SDL_Log("Init SDL...");
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+        SDL_LogCritical(1, "SDL_Init failed: %s", SDL_GetError());
+        throw std::runtime_error("SDL_Init failed");
+    }
+    if (TTF_Init() != 0) {
+        SDL_LogCritical(1, "TTF_Init failed: %s", TTF_GetError());
+        SDL_Quit();
+        throw std::runtime_error("TTF_Init failed");
+    }
+    SDL_Log("SDL initialized.");
+
+    SDL_DisplayMode displayMode;
+
+    SDL_Log("fetching display resolution");
+    if (SDL_GetDesktopDisplayMode(0, &displayMode) != 0) {
+        SDL_LogCritical(1, "SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
+        SDL_Log("setting default resolution to default: 800x600");
+        properties.resolution.height = 600;
+        properties.resolution.width = 800;
+    }
+    else {
+        properties.resolution.height = displayMode.h / 2;
+        properties.resolution.width = displayMode.w / 2;
+        SDL_Log("setting resolution to %dx%d", properties.resolution.width, properties.resolution.height);
+    }
+
+    SDL_Log("creating window...");
+    properties.app.window = SDL_CreateWindow(
+        properties.GAME_TITLE,
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        properties.resolution.width,
+        properties.resolution.height,
+        SDL_WINDOW_SHOWN
+        );
+
+    if (properties.app.window == nullptr) {
+        SDL_LogCritical(1, "Failed to create window: %s", SDL_GetError());
+        throw std::runtime_error("Failed to create window");
+    }
+    SDL_Log("Window created.");
+
+    SDL_Log("creating renderer...");
+    properties.app.renderer = SDL_CreateRenderer(properties.app.window, -1, SDL_RENDERER_ACCELERATED);
+
+    if (properties.app.renderer == nullptr) {
+        SDL_LogCritical(1, "Failed to create renderer: %s", SDL_GetError());
+        SDL_DestroyWindow(properties.app.window);
+        SDL_Quit();
+        throw std::runtime_error("Failed to create renderer");
+    }
+    SDL_Log("Renderer created.");
+
+    SDL_Log("Current Video Driver: %s", SDL_GetCurrentVideoDriver());
+
+    SDL_Log("setting up SceneManager...");
+    SceneManager::setRenderer(properties.app.renderer);
+    SceneManager::setWindow(properties.app.window);
+
+    SDL_SetRenderDrawBlendMode(properties.app.renderer, SDL_BLENDMODE_BLEND);
+    SDL_DisableScreenSaver();
+}
+
 GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) { }
 GameEngine::GameEngine(GameEngine const &copy) : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) { }
 GameEngine &GameEngine::operator=(GameEngine const &copy) { return *this; }
@@ -141,4 +141,12 @@ GameEngine &GameEngine::operator=(GameEngine const &copy) { return *this; }
 GameEngine &GameEngine::getInstance() {
     static GameEngine instance;
     return instance;
+}
+
+GameEngine::~GameEngine() {
+    SDL_Log("cleaning up");
+    SDL_DestroyRenderer(properties.app.renderer);
+    SDL_DestroyWindow(properties.app.window);
+    TTF_Quit();
+    SDL_Quit();
 }

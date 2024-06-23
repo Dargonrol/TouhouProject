@@ -13,9 +13,10 @@ class GameEngine {
 public:
     static GameEngine& getInstance();
     ~GameEngine();
+
     void run();
-    void init();
-    void setFPS(int fps);
+    static void init();
+    static void setFPS(int fps);
 
 private:
     GameEngine();

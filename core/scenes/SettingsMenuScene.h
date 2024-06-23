@@ -16,41 +16,36 @@ public:
     };
     int i = 0;
     int j = properties.resolution.height;
-    bool switchDir = false;
+    bool switchDir1 = false;
 
     void update(SDL_Renderer* renderer) override {
-        //SDL_SetRenderDrawColor(renderer, 100, 100, 0, 100); // Set the background color to purple
         SDL_Rect rect;
-        rect.x = i;  // the x coordinate
-        rect.y = i;  // the y coordinate
-        rect.w = i; // the width of the rectangle
-        rect.h = i; // the height of the rectangle
-        // Set the color to red
+        rect.x = i;
+        rect.y = i;
+        rect.w = i;
+        rect.h = i;
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 128);
-        // Fill the rectangle
         SDL_RenderFillRect(renderer, &rect);
 
         SDL_Rect rect2;
-        rect2.x = j;  // the x coordinate
-        rect2.y = j;  // the y coordinate
-        rect2.w = -i; // the width of the rectangle
-        rect2.h = -i; // the height of the rectangle
-        // Set the color to red
+        rect2.x = j;
+        rect2.y = j;
+        rect2.w = -i;
+        rect2.h = -i;
         SDL_SetRenderDrawColor(renderer, 0, 255, 0, 128);
-        // Fill the rectangle
         SDL_RenderFillRect(renderer, &rect2);
 
         if (2*i >= properties.resolution.height) {
-            switchDir = true;
+            switchDir1 = true;
         } else if (2*i <= 0) {
-            switchDir = false;
+            switchDir1 = false;
         }
-        if (switchDir) {
+        if (switchDir1) {
             i = i - 2;
-            j = j + 3;
+            j = j + 2;
         } else {
             i = i + 2;
-            j = j - 3;
+            j = j - 2;
         }
     }
 

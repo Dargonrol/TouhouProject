@@ -110,6 +110,9 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.h">
 			<Option target="TouhouProject"/>
 		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/text.h">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/MainMenuScene.h">
 			<Option target="TouhouProject"/>
 		</Unit>
@@ -117,6 +120,9 @@
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/SettingsMenuScene.h">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/utility.h">
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/main.cpp">
@@ -129,6 +135,9 @@
 			<Option virtualFolder="CMake Files\cmake\modules\"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/cmake/modules/FindSDL2_image.cmake">
+			<Option virtualFolder="CMake Files\cmake\modules\"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/cmake/modules/FindSDL2_ttf.cmake">
 			<Option virtualFolder="CMake Files\cmake\modules\"/>
 		</Unit>
 	</Project>
