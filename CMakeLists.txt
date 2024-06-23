@@ -18,6 +18,10 @@ add_executable(${PROJECT_NAME} main.cpp
         core/GameProperties.h
         core/UI/text.h
         core/utility.h
+        core/language.h
+        core/file/parser.cpp
+        core/file/parser.h
+        core/language.cpp
 )
 
 # --- SDL2 SETUP ---

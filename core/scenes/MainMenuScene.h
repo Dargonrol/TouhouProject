@@ -7,6 +7,7 @@
 #include "../StateManager.h"
 #include "../EventManager.h"
 #include "../GameProperties.h"
+#include "../language.h"
 #include "../utility.h"
 #include "../UI/text.h"
 
@@ -23,17 +24,17 @@ private:
 public:
     MainMenuScene(SDL_Renderer* renderer, SDL_Window* window) {
         setID(MAIN_MENU_SCENE);
-        MainTitlefont = TTF_OpenFont(fontsDirs.gotHeroin, calculateFontSize(fontMultiplier.TITLE));
-        ButtonFont = TTF_OpenFont(fontsDirs.openSansRegular, calculateFontSize(fontMultiplier.TEXT));
+        MainTitlefont = TTF_OpenFont(fontsDirs.gotHeroin.c_str(), calculateFontSize(fontMultiplier.TITLE));
+        ButtonFont = TTF_OpenFont(fontsDirs.openSansRegular.c_str(), calculateFontSize(fontMultiplier.TEXT));
 
         if (anyNull(MainTitlefont, ButtonFont)) {
-            SDL_Log("Failed to load font: %s", TTF_GetError());
+            SDL_LogError(1, "Failed to load font: %s", TTF_GetError());
             throw std::runtime_error("Failed to load font");
         }
 
-        getTextAndRect(renderer, "Main Menu", MainTitlefont, texture1, rect1);
+        getTextAndRect(renderer, Language::getInstance().language.labels.mainMenuScene.title.c_str(), MainTitlefont, texture1, rect1);
         setTextPosition(rect1, ScreenCenterX() - rect1.w / 2, ScreenCenterY() / 2 - rect1.h);
-        getTextAndRect(renderer, "Start Game", ButtonFont, texture2, rect2);
+        getTextAndRect(renderer, Language::getInstance().language.buttons.newGame.c_str(), ButtonFont, texture2, rect2);
         setTextPosition(rect2, ScreenCenterX() - rect2.w / 2, rect1.y + rect1.h);
 
         SDLRect1 = {rect1.x, rect1.y, rect1.w, rect1.h};

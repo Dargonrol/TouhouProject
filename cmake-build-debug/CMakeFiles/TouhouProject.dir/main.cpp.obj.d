@@ -364,6 +364,8 @@ CMakeFiles/TouhouProject.dir/main.cpp.obj: \
  X:/user/programming/projects/projects/TouhouProject/core/StateManager.h \
  X:/user/programming/projects/projects/TouhouProject/core/EventManager.h \
  X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h \
+ X:/user/programming/projects/projects/TouhouProject/core/language.h \
+ X:/user/programming/projects/projects/TouhouProject/core/language.h \
  X:/user/programming/projects/projects/TouhouProject/core/utility.h \
  X:/user/programming/projects/projects/TouhouProject/core/GameProperties.h \
  X:/user/programming/projects/projects/TouhouProject/core/UI/text.h \

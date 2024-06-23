@@ -1,0 +1,23 @@
+buttons {
+    newGame = "neues Spiel"
+    settings = "Einstellungen"
+    quit = "beenden"
+    watchReplays = "Replays ansehen"
+}
+
+credits {
+    story = "story"
+    graphicDesign = "Grafikdesign"
+}
+
+labels {
+    mainMenuScene {
+        title = "Hauptmenü"
+    }
+    settingsScene {
+        title = "Einstellungen"
+        language = "Sprache"
+        fullscreen = "Vollbild"
+        resolution = "Auflösung"
+    }
+}

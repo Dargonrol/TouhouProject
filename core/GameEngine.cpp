@@ -12,6 +12,8 @@
 
 #include <chrono>
 
+#include "file/Parser.h"
+
 void GameEngine::run() {
     // for calculating framerate etc.
     Uint64 frameStart;
@@ -91,6 +93,7 @@ void GameEngine::init() {
         properties.resolution.height = 600;
         properties.resolution.width = 800;
     }
+
     else {
         properties.resolution.height = displayMode.h / 2;
         properties.resolution.width = displayMode.w / 2;
@@ -132,6 +135,14 @@ void GameEngine::init() {
 
     SDL_SetRenderDrawBlendMode(properties.app.renderer, SDL_BLENDMODE_BLEND);
     SDL_DisableScreenSaver();
+
+    // initialize language
+    Parser::parseLanguage(GERMAN);
+    SDL_Log("main title: %s", Language::getInstance().language.labels.mainMenuScene.title.c_str());
+
+
+
+
 }
 
 GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) { }

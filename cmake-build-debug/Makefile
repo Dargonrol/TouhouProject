@@ -200,6 +200,54 @@ core/StateManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/StateManager.cpp.s
 .PHONY : core/StateManager.cpp.s
 
+core/file/Parser.obj: core/file/Parser.cpp.obj
+.PHONY : core/file/Parser.obj
+
+# target to build an object file
+core/file/Parser.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj
+.PHONY : core/file/Parser.cpp.obj
+
+core/file/Parser.i: core/file/Parser.cpp.i
+.PHONY : core/file/Parser.i
+
+# target to preprocess a source file
+core/file/Parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.i
+.PHONY : core/file/Parser.cpp.i
+
+core/file/Parser.s: core/file/Parser.cpp.s
+.PHONY : core/file/Parser.s
+
+# target to generate assembly for a file
+core/file/Parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.s
+.PHONY : core/file/Parser.cpp.s
+
+core/language.obj: core/language.cpp.obj
+.PHONY : core/language.obj
+
+# target to build an object file
+core/language.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/language.cpp.obj
+.PHONY : core/language.cpp.obj
+
+core/language.i: core/language.cpp.i
+.PHONY : core/language.i
+
+# target to preprocess a source file
+core/language.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/language.cpp.i
+.PHONY : core/language.cpp.i
+
+core/language.s: core/language.cpp.s
+.PHONY : core/language.s
+
+# target to generate assembly for a file
+core/language.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/language.cpp.s
+.PHONY : core/language.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -242,6 +290,12 @@ help:
 	@echo ... core/StateManager.obj
 	@echo ... core/StateManager.i
 	@echo ... core/StateManager.s
+	@echo ... core/file/Parser.obj
+	@echo ... core/file/Parser.i
+	@echo ... core/file/Parser.s
+	@echo ... core/language.obj
+	@echo ... core/language.i
+	@echo ... core/language.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -128,12 +128,44 @@ CMakeFiles/TouhouProject.dir/core/StateManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TouhouProject.dir/core/StateManager.cpp.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S X:\user\programming\projects\projects\TouhouProject\core\StateManager.cpp -o CMakeFiles\TouhouProject.dir\core\StateManager.cpp.s
 
+CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj: CMakeFiles/TouhouProject.dir/flags.make
+CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj: CMakeFiles/TouhouProject.dir/includes_CXX.rsp
+CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj: X:/user/programming/projects/projects/TouhouProject/core/file/Parser.cpp
+CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj: CMakeFiles/TouhouProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=X:\user\programming\projects\projects\TouhouProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj -MF CMakeFiles\TouhouProject.dir\core\file\Parser.cpp.obj.d -o CMakeFiles\TouhouProject.dir\core\file\Parser.cpp.obj -c X:\user\programming\projects\projects\TouhouProject\core\file\Parser.cpp
+
+CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E X:\user\programming\projects\projects\TouhouProject\core\file\Parser.cpp > CMakeFiles\TouhouProject.dir\core\file\Parser.cpp.i
+
+CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S X:\user\programming\projects\projects\TouhouProject\core\file\Parser.cpp -o CMakeFiles\TouhouProject.dir\core\file\Parser.cpp.s
+
+CMakeFiles/TouhouProject.dir/core/language.cpp.obj: CMakeFiles/TouhouProject.dir/flags.make
+CMakeFiles/TouhouProject.dir/core/language.cpp.obj: CMakeFiles/TouhouProject.dir/includes_CXX.rsp
+CMakeFiles/TouhouProject.dir/core/language.cpp.obj: X:/user/programming/projects/projects/TouhouProject/core/language.cpp
+CMakeFiles/TouhouProject.dir/core/language.cpp.obj: CMakeFiles/TouhouProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=X:\user\programming\projects\projects\TouhouProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/TouhouProject.dir/core/language.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TouhouProject.dir/core/language.cpp.obj -MF CMakeFiles\TouhouProject.dir\core\language.cpp.obj.d -o CMakeFiles\TouhouProject.dir\core\language.cpp.obj -c X:\user\programming\projects\projects\TouhouProject\core\language.cpp
+
+CMakeFiles/TouhouProject.dir/core/language.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TouhouProject.dir/core/language.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E X:\user\programming\projects\projects\TouhouProject\core\language.cpp > CMakeFiles\TouhouProject.dir\core\language.cpp.i
+
+CMakeFiles/TouhouProject.dir/core/language.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TouhouProject.dir/core/language.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S X:\user\programming\projects\projects\TouhouProject\core\language.cpp -o CMakeFiles\TouhouProject.dir\core\language.cpp.s
+
 # Object files for target TouhouProject
 TouhouProject_OBJECTS = \
 "CMakeFiles/TouhouProject.dir/main.cpp.obj" \
 "CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj" \
 "CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj" \
-"CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj"
+"CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj" \
+"CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj" \
+"CMakeFiles/TouhouProject.dir/core/language.cpp.obj"
 
 # External object files for target TouhouProject
 TouhouProject_EXTERNAL_OBJECTS =
@@ -142,6 +174,8 @@ TouhouProject.exe: CMakeFiles/TouhouProject.dir/main.cpp.obj
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj
+TouhouProject.exe: CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj
+TouhouProject.exe: CMakeFiles/TouhouProject.dir/core/language.cpp.obj
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/build.make
 TouhouProject.exe: X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a
 TouhouProject.exe: X:/user/programming/projects/projects/TouhouProject/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a
@@ -150,7 +184,7 @@ TouhouProject.exe: X:/user/programming/projects/projects/TouhouProject/SDL2/x86_
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/linkLibs.rsp
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/objects1.rsp
 TouhouProject.exe: CMakeFiles/TouhouProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=X:\user\programming\projects\projects\TouhouProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable TouhouProject.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=X:\user\programming\projects\projects\TouhouProject\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable TouhouProject.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\TouhouProject.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

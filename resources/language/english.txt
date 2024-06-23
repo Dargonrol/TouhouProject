@@ -1,0 +1,23 @@
+buttons {
+    newGame = "new Game"
+    settings = "settings"
+    quit = "quit game"
+    watchReplays = "replays"
+}
+
+credits {
+    story = "story"
+    graphicDesign = "graphic design
+}
+
+labels {
+    mainMenuScene {
+        title = "main Menu"
+    }
+    settingsScene {
+        title = "settings"
+        language = "language"
+        fullscreen = "fullscreen"
+        resolution = "resolution"
+    }
+}
