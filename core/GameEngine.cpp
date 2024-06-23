@@ -137,8 +137,7 @@ void GameEngine::init() {
     SDL_DisableScreenSaver();
 
     // initialize language
-    Parser::parseLanguage(GERMAN);
-    SDL_Log("main title: %s", Language::getInstance().language.labels.mainMenuScene.title.c_str());
+    Parser::parseLanguage(ENGLISH);
 
 
 

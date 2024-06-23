@@ -71,7 +71,6 @@ void Parser::parseLanguage(Languages languageEnum) {
             Language::setLanguageValue(key, value, category1, category2);
         }
     }
-    SDL_Log("main title: %s", Language::getInstance().language.labels.mainMenuScene.title.c_str());
 }
 
 bool Parser::lineIsEmptyOrComment(std::string* line) {

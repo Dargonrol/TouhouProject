@@ -11,7 +11,6 @@ void Language::setLanguageValue(std::string key, std::string &value, const std::
             if (category2 == "mainMenuScene") {
                 if (key == "title") {
                     getInstance().language.labels.mainMenuScene.title = value;
-                    SDL_Log("main title: %s", getInstance().language.labels.mainMenuScene.title.c_str());
                 } else {
                     SDL_LogError(1, "Unknown key: %s", key.c_str());
                 }
