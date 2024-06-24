@@ -6,7 +6,7 @@
 #define GAMEPROPERTIES_H
 
 #include <SDL.h>
-#include "language.h"
+#include "UI/language.h"
 
 struct Resolution {
     int width;

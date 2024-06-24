@@ -110,6 +110,21 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.h">
 			<Option target="TouhouProject"/>
 		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/language.cpp">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/language.h">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/MainMenuScene.h">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/Scene.h">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/SettingsMenuScene.h">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/text.h">
 			<Option target="TouhouProject"/>
 		</Unit>
@@ -117,21 +132,6 @@
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/file/Parser.h">
-			<Option target="TouhouProject"/>
-		</Unit>
-		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/language.cpp">
-			<Option target="TouhouProject"/>
-		</Unit>
-		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/language.h">
-			<Option target="TouhouProject"/>
-		</Unit>
-		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/MainMenuScene.h">
-			<Option target="TouhouProject"/>
-		</Unit>
-		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/Scene.h">
-			<Option target="TouhouProject"/>
-		</Unit>
-		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/scenes/SettingsMenuScene.h">
 			<Option target="TouhouProject"/>
 		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/utility.h">

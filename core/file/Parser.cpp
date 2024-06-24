@@ -11,7 +11,7 @@
 #include <list>
 
 #include "../GameProperties.h"
-#include "../language.h"
+#include "../UI/language.h"
 
 void Parser::parseLanguage(Languages languageEnum) {
     std::string langDir;

@@ -5,7 +5,7 @@
 #include "StateManager.h"
 #include <SDL.h>
 #include "SceneManager.h"
-#include "scenes/Scene.h"
+#include "UI/scenes/Scene.h"
 
 void StateManager::changeStateRequest(GameState state) {
     gameState = state;

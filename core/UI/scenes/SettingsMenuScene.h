@@ -3,8 +3,8 @@
 //
 
 #include "Scene.h"
-#include "../StateManager.h"
-#include "../GameProperties.h"
+#include "../../StateManager.h"
+#include "../../GameProperties.h"
 
 #ifndef SETTINGSMENUSCENE_H
 #define SETTINGSMENUSCENE_H

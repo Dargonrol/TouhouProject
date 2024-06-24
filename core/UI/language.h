@@ -48,6 +48,6 @@ enum Languages {
     GERMAN
 };
 
-inline std::string german = "german.txt";
-inline std::string english = "english.txt";
+inline std::string german = "german.lang";
+inline std::string english = "english.lang";
 #endif //LANGUAGE_H

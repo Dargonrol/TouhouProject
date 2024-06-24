@@ -12,6 +12,7 @@
 
 #include <chrono>
 
+#include "GameProperties.h"
 #include "file/Parser.h"
 
 void GameEngine::run() {

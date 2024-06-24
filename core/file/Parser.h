@@ -6,7 +6,7 @@
 #define PARSER_H
 #include <string>
 
-#include "../language.h"
+#include "../UI/language.h"
 
 class Parser {
 private:

@@ -6,9 +6,9 @@
 #define SCENEMANAGER_H
 #include <deque>
 
-#include "scenes/MainMenuScene.h"
-#include "scenes/Scene.h"
-#include "scenes/SettingsMenuScene.h"
+#include "UI/scenes/MainMenuScene.h"
+#include "UI/scenes/Scene.h"
+#include "UI/scenes/SettingsMenuScene.h"
 
 class SceneManager {
 private:

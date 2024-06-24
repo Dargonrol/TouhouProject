@@ -9,19 +9,19 @@ add_executable(${PROJECT_NAME} main.cpp
         core/GameEngine.cpp
         core/StateManager.h
         core/SceneManager.h
-        core/scenes/Scene.h
-        core/scenes/MainMenuScene.h
+        core/UI/scenes/Scene.h
+        core/UI/scenes/MainMenuScene.h
         core/EventManager.cpp
         core/EventManager.h
-        core/scenes/settingsMenuScene.h
+        core/UI/scenes/settingsMenuScene.h
         core/StateManager.cpp
         core/GameProperties.h
         core/UI/text.h
         core/utility.h
-        core/language.h
+        core/UI/language.h
         core/file/parser.cpp
         core/file/parser.h
-        core/language.cpp
+        core/UI/language.cpp
 )
 
 # --- SDL2 SETUP ---

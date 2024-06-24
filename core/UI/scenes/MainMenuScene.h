@@ -4,12 +4,12 @@
 #include <stdexcept>
 
 #include "Scene.h"
-#include "../StateManager.h"
-#include "../EventManager.h"
-#include "../GameProperties.h"
-#include "../language.h"
-#include "../utility.h"
-#include "../UI/text.h"
+#include "../../StateManager.h"
+#include "../../EventManager.h"
+#include "../../GameProperties.h"
+#include "../../UI/language.h"
+#include "../../utility.h"
+#include "../../UI/text.h"
 
 #ifndef MAINMENUSCENE_H
 #define MAINMENUSCENE_H
