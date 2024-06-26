@@ -11,6 +11,7 @@
 #include "EventManager.h"
 
 #include <chrono>
+#include <SDL_image.h>
 
 #include "GameProperties.h"
 #include "file/Parser.h"
@@ -82,6 +83,13 @@ void GameEngine::init() {
         SDL_LogCritical(1, "TTF_Init failed: %s", TTF_GetError());
         SDL_Quit();
         throw std::runtime_error("TTF_Init failed");
+    }
+
+    if (IMG_Init(IMG_INIT_PNG) == 0) {
+        SDL_LogCritical(1, "IMG_Init failed: %s", IMG_GetError());
+        TTF_Quit();
+        SDL_Quit();
+        throw std::runtime_error("IMG_Init failed");
     }
     SDL_Log("SDL initialized.");
 
@@ -159,5 +167,6 @@ GameEngine::~GameEngine() {
     SDL_DestroyRenderer(properties.app.renderer);
     SDL_DestroyWindow(properties.app.window);
     TTF_Quit();
+    IMG_Quit();
     SDL_Quit();
 }

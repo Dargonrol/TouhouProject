@@ -5,3 +5,5 @@ writing parser for settings file and save file and maybe replay
 config file to load last resolution etc... on startup
 move scenes out of core?
 when changes res in settings, reload scenes (cause font needs to update in size which is handled in constructor)
+when selecting button, maybe animation? like when clicking, calling function that animates it and then sate change request
+vsync setting with SDL_RenderSetVSync(properties.app.renderer, SDL_TRUE);

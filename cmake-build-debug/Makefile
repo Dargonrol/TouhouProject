@@ -200,6 +200,30 @@ core/StateManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/StateManager.cpp.s
 .PHONY : core/StateManager.cpp.s
 
+core/UI/elements/Button.obj: core/UI/elements/Button.cpp.obj
+.PHONY : core/UI/elements/Button.obj
+
+# target to build an object file
+core/UI/elements/Button.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/elements/Button.cpp.obj
+.PHONY : core/UI/elements/Button.cpp.obj
+
+core/UI/elements/Button.i: core/UI/elements/Button.cpp.i
+.PHONY : core/UI/elements/Button.i
+
+# target to preprocess a source file
+core/UI/elements/Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/elements/Button.cpp.i
+.PHONY : core/UI/elements/Button.cpp.i
+
+core/UI/elements/Button.s: core/UI/elements/Button.cpp.s
+.PHONY : core/UI/elements/Button.s
+
+# target to generate assembly for a file
+core/UI/elements/Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/elements/Button.cpp.s
+.PHONY : core/UI/elements/Button.cpp.s
+
 core/UI/language.obj: core/UI/language.cpp.obj
 .PHONY : core/UI/language.obj
 
@@ -290,6 +314,9 @@ help:
 	@echo ... core/StateManager.obj
 	@echo ... core/StateManager.i
 	@echo ... core/StateManager.s
+	@echo ... core/UI/elements/Button.obj
+	@echo ... core/UI/elements/Button.i
+	@echo ... core/UI/elements/Button.s
 	@echo ... core/UI/language.obj
 	@echo ... core/UI/language.i
 	@echo ... core/UI/language.s

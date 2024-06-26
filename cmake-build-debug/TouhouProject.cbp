@@ -110,6 +110,12 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/StateManager.h">
 			<Option target="TouhouProject"/>
 		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/elements/Button.cpp">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/elements/Button.h">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/language.cpp">
 			<Option target="TouhouProject"/>
 		</Unit>

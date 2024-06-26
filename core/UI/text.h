@@ -7,6 +7,7 @@
 #include <cmath>
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include "../GameProperties.h"
 
 inline void getTextAndRect(SDL_Renderer* renderer, int posX, int posY, const char* text, TTF_Font* font, SDL_Texture* &texture, SDL_Rect &rect, SDL_Color textColor) {
     int text_width;

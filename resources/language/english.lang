@@ -1,23 +1,23 @@
 buttons {
-    newGame = "new Game"
-    settings = "settings"
-    quit = "quit game"
-    watchReplays = "replays"
+    newGame = new Game
+    settings = settings
+    quit = quit game
+    watchReplays = replays
 }
 
 credits {
-    story = "story"
-    graphicDesign = "graphic design
+    story = story
+    graphicDesign = graphic design
 }
 
 labels {
     mainMenuScene {
-        title = "main Menu"
+        title = main Menu
     }
     settingsScene {
-        title = "settings"
-        language = "language"
-        fullscreen = "fullscreen"
-        resolution = "resolution"
+        title = settings
+        language = language
+        fullscreen = fullscreen
+        resolution = resolution
     }
 }

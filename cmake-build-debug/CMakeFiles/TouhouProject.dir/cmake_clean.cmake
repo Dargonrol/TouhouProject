@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj.d"
   "CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj"
   "CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj.d"
+  "CMakeFiles/TouhouProject.dir/core/UI/elements/Button.cpp.obj"
+  "CMakeFiles/TouhouProject.dir/core/UI/elements/Button.cpp.obj.d"
   "CMakeFiles/TouhouProject.dir/core/UI/language.cpp.obj"
   "CMakeFiles/TouhouProject.dir/core/UI/language.cpp.obj.d"
   "CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj"

@@ -22,6 +22,8 @@ add_executable(${PROJECT_NAME} main.cpp
         core/file/parser.cpp
         core/file/parser.h
         core/UI/language.cpp
+        core/UI/elements/Button.cpp
+        core/UI/elements/Button.h
 )
 
 # --- SDL2 SETUP ---
