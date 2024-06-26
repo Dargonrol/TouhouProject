@@ -24,6 +24,8 @@ add_executable(${PROJECT_NAME} main.cpp
         core/UI/language.cpp
         core/UI/elements/Button.cpp
         core/UI/elements/Button.h
+        core/UI/scenes/GameScene.cpp
+        core/UI/scenes/GameScene.h
 )
 
 # --- SDL2 SETUP ---

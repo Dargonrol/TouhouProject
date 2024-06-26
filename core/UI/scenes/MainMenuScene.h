@@ -16,9 +16,9 @@
 #define MAINMENUSCENE_H
 class MainMenuScene : public Scene {
 private:
-    TTF_Font *MainTitlefont;
-    SDL_Rect rect1{};
-    SDL_Texture *texture1{};
+    TTF_Font *MainTitlefont, *buttonFont{};
+    SDL_Rect rect1{}, rect2{};
+    SDL_Texture *texture1{}, *texture2{};
     SDL_Rect SDLRect1{};
     SDL_Rect buttonRect{};
     Button button1 = {};
@@ -40,19 +40,25 @@ public:
         buttonRect.h = 50;
         buttonRect.x = ScreenCenterX() - buttonRect.w;
         buttonRect.y = rect1.y + rect1.h + 50;
-        button1 = Button(renderer, buttonRect, Language::getInstance().language.buttons.newGame.c_str(), fontsDirs.openSansRegular.c_str(), 30, {255, 255, 255, 255}, {0, 0, 0, 255});
-        //button1.disableDynamicTextRezising();
-        //button1.updateText("new Gamead");
+        button1 = Button(renderer, buttonRect,  {0, 0, 0, 255});
+        buttonFont = TTF_OpenFont(
+            fontsDirs.openSansRegular.c_str(),
+            fitFontSizeInButton(buttonRect, fontsDirs.openSansRegular.c_str(), Language::getInstance().language.buttons.newGame.c_str(), calculateFontSize(fontMultiplier.TEXT)));
         SDLRect1 = {rect1.x, rect1.y, rect1.w, rect1.h};
         button1.setOnClick(changeToSettingsMenu);
+        //button1.disableMouse();
+
+        getTextAndRect(renderer, Language::getInstance().language.buttons.newGame.c_str(), buttonFont, texture2, rect2);
+        setTextPosition(rect2, buttonRect.x, buttonRect.y);
     };
 
 
-    void update(SDL_Renderer* renderer) override {
+    void update(SDL_Renderer* renderer, double deltaTime) override {
         SDL_SetRenderDrawColor(renderer, 100, 100, 180, 255); // Set the background color to purple
         SDL_RenderClear(renderer); // Clear the screen
         button1.render(renderer);
         SDL_RenderCopy(renderer, texture1, nullptr, &rect1);
+        SDL_RenderCopy(renderer, texture2, nullptr, &rect2);
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         SDL_RenderDrawRect(renderer, &SDLRect1);
     }
@@ -81,7 +87,7 @@ public:
     }
 
     static void changeToSettingsMenu() {
-        StateManager::getInstance().changeStateRequest(SETTINGS_MENU);
+        StateManager::getInstance().changeStateRequest(GAMEPLAY);
     }
 
 };

@@ -248,6 +248,30 @@ core/UI/language.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/language.cpp.s
 .PHONY : core/UI/language.cpp.s
 
+core/UI/scenes/GameScene.obj: core/UI/scenes/GameScene.cpp.obj
+.PHONY : core/UI/scenes/GameScene.obj
+
+# target to build an object file
+core/UI/scenes/GameScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/GameScene.cpp.obj
+.PHONY : core/UI/scenes/GameScene.cpp.obj
+
+core/UI/scenes/GameScene.i: core/UI/scenes/GameScene.cpp.i
+.PHONY : core/UI/scenes/GameScene.i
+
+# target to preprocess a source file
+core/UI/scenes/GameScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/GameScene.cpp.i
+.PHONY : core/UI/scenes/GameScene.cpp.i
+
+core/UI/scenes/GameScene.s: core/UI/scenes/GameScene.cpp.s
+.PHONY : core/UI/scenes/GameScene.s
+
+# target to generate assembly for a file
+core/UI/scenes/GameScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/GameScene.cpp.s
+.PHONY : core/UI/scenes/GameScene.cpp.s
+
 core/file/Parser.obj: core/file/Parser.cpp.obj
 .PHONY : core/file/Parser.obj
 
@@ -320,6 +344,9 @@ help:
 	@echo ... core/UI/language.obj
 	@echo ... core/UI/language.i
 	@echo ... core/UI/language.s
+	@echo ... core/UI/scenes/GameScene.obj
+	@echo ... core/UI/scenes/GameScene.i
+	@echo ... core/UI/scenes/GameScene.s
 	@echo ... core/file/Parser.obj
 	@echo ... core/file/Parser.i
 	@echo ... core/file/Parser.s

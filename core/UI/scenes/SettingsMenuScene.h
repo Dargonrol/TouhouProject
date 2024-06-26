@@ -18,7 +18,7 @@ public:
     int j = properties.resolution.height;
     bool switchDir1 = false;
 
-    void update(SDL_Renderer* renderer) override {
+    void update(SDL_Renderer* renderer, double deltaTime) override {
         SDL_Rect rect;
         rect.x = i;
         rect.y = i;

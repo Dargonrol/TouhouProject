@@ -122,6 +122,12 @@
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/language.h">
 			<Option target="TouhouProject"/>
 		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/GameScene.cpp">
+			<Option target="TouhouProject"/>
+		</Unit>
+		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/GameScene.h">
+			<Option target="TouhouProject"/>
+		</Unit>
 		<Unit filename="X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/MainMenuScene.h">
 			<Option target="TouhouProject"/>
 		</Unit>

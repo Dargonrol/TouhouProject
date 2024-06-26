@@ -1,7 +1,3 @@
-//
-// Created by dargonrol on 6/20/2024.
-//
-
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <stdexcept>
@@ -9,64 +5,107 @@
 #include "SceneManager.h"
 #include "StateManager.h"
 #include "EventManager.h"
-
-#include <chrono>
 #include <SDL_image.h>
+#include <stdexcept>
+#include <vector>
 
 #include "GameProperties.h"
 #include "file/Parser.h"
 
 void GameEngine::run() {
-    // for calculating framerate etc.
-    Uint64 frameStart;
-    Uint64 frameTime = 0;
-    Uint16 lastRenderTime = 0;
-    std::chrono::duration<double, std::micro> subFrameSum{};
+    const double MS_PER_UPDATE = 1000.0 / properties.FPS; // Targeting 60 updates per second (1000ms / 60)
 
-    // for measuring average frame time for statistics
-    auto frameStart2 = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::micro> frameTime2{};
-    Uint32 i = 0;
+    Uint64 previous = SDL_GetPerformanceCounter();
+    double lag = 0.0;
 
+    double deltaTime = 0.0;
+
+    const int sampleSize = 100; // Number of frames to average over
+    std::vector<double> frameTimes(sampleSize, 0.0);
+    int frameIndex = 0;
+    double totalFrameTime = 0.0;
+    int frameCount = 0;
+
+    double avgFrameTime = 0.0;
+    double avgFPS = 0.0;
+
+    double secondCounter = 0.0; // Counter to track elapsed time for one second
+
+    Uint64 lastRenderTime = SDL_GetPerformanceCounter();
+    int renderCount = 0;
+    double totalRenderTime = 0.0;
+    double avgRenderFPS = 0.0;
 
     StateManager::getInstance().changeStateRequest(MAIN_MENU);
 
-
     while (eventManager.running) {
-        frameStart = SDL_GetTicks();
-        SDL_Delay(properties.mainGameLoopUpdateDelay);
+        Uint64 current = SDL_GetPerformanceCounter();
+        deltaTime = (double)((current - previous) * 1000.0 / SDL_GetPerformanceFrequency());
+        previous = current;
+        lag += deltaTime;
+        secondCounter += deltaTime;
 
-        // for measuring average frame time for statistics
-        frameStart2 = std::chrono::high_resolution_clock::now();
-
+        // Process input
         eventManager.handleEvents();
 
-        if (lastRenderTime >= properties.frameDelay) {
-            sceneManager.updateSceneQueue();
-            sceneManager.renderSceneQueue();
-            lastRenderTime = 0;
-        } else {
-            lastRenderTime += frameTime;
+        // Update game logic
+        while (lag >= MS_PER_UPDATE) {
+            sceneManager.updateSceneQueue(deltaTime); // Pass deltaTime to update function
+            lag -= MS_PER_UPDATE;
         }
-        frameTime = SDL_GetTicks() - frameStart;
 
-        // calculate average frame time for statistics
-        frameTime2 = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - frameStart2);
-        subFrameSum += frameTime2;
+        // Render scene
+        sceneManager.renderSceneQueue(); // Pass deltaTime to render function
 
-        // for measuring average frame time for statistics
-        if (i == 1000000) {
-            avgSubFrameTime = subFrameSum / 1000000.0;
-            //SDL_Log("Average Frame Time: %f microseconds", avgSubFrameTime);
-            i = 0;
-            subFrameSum = std::chrono::duration<double, std::micro>{};
+        // Calculate frame time
+        Uint64 frameEnd = SDL_GetPerformanceCounter();
+        double frameTime = ((frameEnd - current) * 1000.0 / SDL_GetPerformanceFrequency());
+
+        // Update frame time statistics
+        totalFrameTime -= frameTimes[frameIndex];
+        frameTimes[frameIndex] = frameTime;
+        totalFrameTime += frameTime;
+
+        frameIndex = (frameIndex + 1) % sampleSize;
+        if (frameCount < sampleSize) {
+            frameCount++;
         }
-        i++;
+
+        // Update render time statistics
+        renderCount++;
+        totalRenderTime += deltaTime;
+        double elapsedSinceLastRender = (double)((frameEnd - lastRenderTime) * 1000.0 / SDL_GetPerformanceFrequency());
+        if (elapsedSinceLastRender >= 1000.0) {
+            avgRenderFPS = renderCount / (totalRenderTime / 1000.0);
+            SDL_Log("Render FPS: %f", avgRenderFPS);
+            renderCount = 0;
+            totalRenderTime = 0.0;
+            lastRenderTime = frameEnd;
+        }
+
+        // Update statistics every second
+        if (secondCounter >= 1000.0) {
+            avgFrameTime = totalFrameTime / frameCount;
+            avgFPS = 1000.0 / avgFrameTime;
+            SDL_Log("Average Frame Time: %f ms, Average Game Loop FPS: %f", avgFrameTime, avgFPS);
+            secondCounter = 0.0;
+        }
+
+        // Optional: Delay to ensure the game doesn't run too fast
+        if (frameTime < MS_PER_UPDATE) {
+            SDL_Delay((Uint32)(MS_PER_UPDATE - frameTime));
+        }
     }
 
     SDL_Log("Quitting...");
-    //GameEngine::~GameEngine(); gets called automatically
+    // GameEngine::~GameEngine(); gets called automatically
+    SDL_Quit();
 }
+
+
+
+
+
 
 void GameEngine::setFPS(int fps) {
     properties.FPS = fps;
@@ -101,9 +140,7 @@ void GameEngine::init() {
         SDL_Log("setting default resolution to default: 800x600");
         properties.resolution.height = 600;
         properties.resolution.width = 800;
-    }
-
-    else {
+    } else {
         properties.resolution.height = displayMode.h / 2;
         properties.resolution.width = displayMode.w / 2;
         SDL_Log("setting resolution to %dx%d", properties.resolution.width, properties.resolution.height);
@@ -117,7 +154,7 @@ void GameEngine::init() {
         properties.resolution.width,
         properties.resolution.height,
         SDL_WINDOW_SHOWN
-        );
+    );
 
     if (properties.app.window == nullptr) {
         SDL_LogCritical(1, "Failed to create window: %s", SDL_GetError());
@@ -145,12 +182,10 @@ void GameEngine::init() {
     SDL_SetRenderDrawBlendMode(properties.app.renderer, SDL_BLENDMODE_BLEND);
     SDL_DisableScreenSaver();
 
+    //SDL_RenderSetVSync(properties.app.renderer, SDL_TRUE);
+
     // initialize language
     Parser::parseLanguage(ENGLISH);
-
-
-
-
 }
 
 GameEngine::GameEngine() : eventManager(EventManager::getInstance()), sceneManager(SceneManager::getInstance()), stateManager(StateManager::getInstance()) { }

@@ -4,6 +4,7 @@
 
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
+#include "UI/scenes/Scene.h"
 
 enum GameState {
     MAIN_MENU,
@@ -24,6 +25,7 @@ private:
 public:
     static StateManager& getInstance();
     void changeStateRequest(GameState state);
+    void changeSceneRequest(SceneID sceneID); // push scene to deque
     void returnRequest(); // pop scene from deque
 
     int getState();

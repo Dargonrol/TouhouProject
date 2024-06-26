@@ -6,6 +6,7 @@
 #define SCENEMANAGER_H
 #include <deque>
 
+#include "UI/scenes/GameScene.h"
 #include "UI/scenes/MainMenuScene.h"
 #include "UI/scenes/Scene.h"
 #include "UI/scenes/SettingsMenuScene.h"
@@ -47,14 +48,14 @@ public:
             case SETTINGS_MENU_SCENE:
                 sceneQueue.push_back(new SettingsMenuScene(renderer, window));
                 break;
-            case GAMEPLAY_SCENE:
-                //sceneQueue.push_back(new GameplayScene(renderer, window));
-                break;
             case PAUSE_SCENE:
                 //sceneQueue.push_back(new PauseScene(renderer, window));
                 break;
             case GAME_OVER_SCENE:
                 //sceneQueue.push_back(new GameOverScene(renderer, window));
+                break;
+            case GAMEPLAY_SCENE:
+                sceneQueue.push_back(new GameScene(renderer, window));
                 break;
             default:
                 break;
@@ -76,7 +77,7 @@ public:
     }
 
 
-    void updateSceneQueue() {
+    void updateSceneQueue(double deltaTime) {
         if (SceneManager::isEmpty()) {
             SDL_LogError(1, "Cannot update scene, queue is empty!");
             return;
@@ -85,7 +86,7 @@ public:
         SDL_RenderClear(renderer);
         for (Scene* scene : sceneQueue) {
             //SDL_Log(std::to_string(scene->getID()).c_str());
-            scene->update(this->renderer);
+            scene->update(this->renderer, deltaTime);
         }
     }
 

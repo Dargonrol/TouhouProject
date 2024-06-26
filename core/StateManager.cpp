@@ -13,23 +13,34 @@ void StateManager::changeStateRequest(GameState state) {
         case MAIN_MENU:
             SDL_Log("Main Menu");
             SceneManager::getInstance().changeScene(MAIN_MENU_SCENE);
-            break;
+        break;
+
         case SETTINGS_MENU:
             SDL_Log("Settings Menu");
             SceneManager::getInstance().changeScene(SETTINGS_MENU_SCENE);
-            break;
+        break;
+
         case GAMEPLAY:
             SDL_Log("Gameplay");
-            break;
+            SceneManager::getInstance().changeScene(GAMEPLAY_SCENE);
+
+        break;
+
         case PAUSE:
             SDL_Log("Pause");
-            break;
+        break;
+
         case GAME_OVER:
             SDL_Log("Game Over");
-            break;
+        break;
+
         default:
             break;
     }
+}
+// when chaning into gameplay, create a new game object and push it to the scene queue. This shall only be created once or when pressing new game
+void StateManager::changeSceneRequest(SceneID sceneID) {
+
 }
 
 

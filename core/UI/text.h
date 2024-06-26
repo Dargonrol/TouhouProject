@@ -52,5 +52,18 @@ inline struct {
     float TEXT = 1;
 } fontMultiplier;
 
+inline int fitFontSizeInButton(SDL_Rect rect, const char* fontPath, const char* text, int fontSize) {
+    TTF_Font* font = TTF_OpenFont(fontPath, fontSize);
+    int textWidth, textHeight;
+    TTF_SizeUTF8(font, text, &textWidth, &textHeight);
+    while (textWidth > rect.w || textHeight > rect.h) {
+        fontSize--;
+        TTF_CloseFont(font);
+        font = TTF_OpenFont(fontPath, fontSize);
+        TTF_SizeText(font, text, &textWidth, &textHeight);
+    }
+    TTF_CloseFont(font);
+    return fontSize;
+}
 
 #endif //TEXT_H

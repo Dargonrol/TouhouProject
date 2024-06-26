@@ -24,8 +24,7 @@ public:
     virtual void setID(SceneID id) {
         ID = id;
     }
-    virtual void update(SDL_Renderer* renderer) = 0;
-
+    virtual void update(SDL_Renderer* renderer, double deltaTime) = 0;
     virtual void handleEvents(SDL_Event event) = 0;
 
 private:

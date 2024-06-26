@@ -27,7 +27,8 @@ private:
     SceneManager& sceneManager;
     StateManager& stateManager;
 
-    std::chrono::duration<double, std::micro> avgSubFrameTime = {};
+    double avgFPS = 0;
+    double avgFrameTime = 0;
 };
 
 #endif //GAMEENGINE_H

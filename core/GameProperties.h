@@ -24,9 +24,8 @@ inline struct Properties {
     Resolution resolution = {800, 600};
     App app = {nullptr, nullptr};
     int mainGameLoopUpdateDelay = 1; // how fast the program can at maximum run (not rendering!)
-    const int defaultMainGameLoopUpdateDelay = 1;
-    int FPS = 60;
-    int frameDelay = (1000 / FPS) - mainGameLoopUpdateDelay;
+    int FPS = 144;
+    int frameDelay = (1000 / FPS);
     const int defaultFPS = 60;
     Languages language = ENGLISH;
 
