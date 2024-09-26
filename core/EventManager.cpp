@@ -3,9 +3,6 @@
 //
 
 #include "EventManager.h"
-#include <SDL.h>
-
-#include "SceneManager.h"
 
 EventManager::EventManager() {}
 EventManager::EventManager(EventManager const &copy) {}

@@ -3,46 +3,6 @@
 //
 
 #include "StateManager.h"
-#include <SDL.h>
-#include "SceneManager.h"
-#include "UI/scenes/Scene.h"
-
-void StateManager::changeStateRequest(GameState state) {
-    gameState = state;
-    switch (state) {
-        case MAIN_MENU:
-            SDL_Log("Main Menu");
-            SceneManager::getInstance().changeScene(MAIN_MENU_SCENE);
-        break;
-
-        case SETTINGS_MENU:
-            SDL_Log("Settings Menu");
-            SceneManager::getInstance().changeScene(SETTINGS_MENU_SCENE);
-        break;
-
-        case GAMEPLAY:
-            SDL_Log("Gameplay");
-            SceneManager::getInstance().changeScene(GAMEPLAY_SCENE);
-
-        break;
-
-        case PAUSE:
-            SDL_Log("Pause");
-        break;
-
-        case GAME_OVER:
-            SDL_Log("Game Over");
-        break;
-
-        default:
-            break;
-    }
-}
-// when chaning into gameplay, create a new game object and push it to the scene queue. This shall only be created once or when pressing new game
-void StateManager::changeSceneRequest(SceneID sceneID) {
-
-}
-
 
 StateManager::StateManager() {}
 StateManager::StateManager(StateManager const &copy) {}
@@ -51,4 +11,28 @@ StateManager &StateManager::operator=(StateManager const &copy) { return *this; 
 StateManager &StateManager::getInstance() {
     static StateManager instance;
     return instance;
+}
+
+void StateManager::returnRequest() {
+    m_currentState = m_lastState;
+    SceneManager::getInstance().getCurrentScene()->returnToPreviousScene();
+}
+
+void StateManager::changeStateRequest(GameState state) {
+    m_lastState = m_currentState;
+    m_currentState = state;
+    switch (state) {
+        case::MAIN_MENU:
+            SceneManager::getInstance().changeScene(new MainMenuScene());
+            break;
+        case::SETTINGS_MENU:
+            SceneManager::getInstance().changeScene(new SettingsMenuScene());
+            break;
+        case::STAGE1:
+            SceneManager::getInstance().changeScene(new GameScene(STAGE1));
+            break;
+        case::STAGE2:
+            SceneManager::getInstance().changeScene(new GameScene(STAGE2));
+            break;
+    }
 }

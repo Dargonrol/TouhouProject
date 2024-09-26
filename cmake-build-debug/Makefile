@@ -176,6 +176,30 @@ core/GameEngine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.s
 .PHONY : core/GameEngine.cpp.s
 
+core/SceneManager.obj: core/SceneManager.cpp.obj
+.PHONY : core/SceneManager.obj
+
+# target to build an object file
+core/SceneManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/SceneManager.cpp.obj
+.PHONY : core/SceneManager.cpp.obj
+
+core/SceneManager.i: core/SceneManager.cpp.i
+.PHONY : core/SceneManager.i
+
+# target to preprocess a source file
+core/SceneManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/SceneManager.cpp.i
+.PHONY : core/SceneManager.cpp.i
+
+core/SceneManager.s: core/SceneManager.cpp.s
+.PHONY : core/SceneManager.s
+
+# target to generate assembly for a file
+core/SceneManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/SceneManager.cpp.s
+.PHONY : core/SceneManager.cpp.s
+
 core/StateManager.obj: core/StateManager.cpp.obj
 .PHONY : core/StateManager.obj
 
@@ -272,6 +296,54 @@ core/UI/scenes/GameScene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/GameScene.cpp.s
 .PHONY : core/UI/scenes/GameScene.cpp.s
 
+core/UI/scenes/MainMenuScene.obj: core/UI/scenes/MainMenuScene.cpp.obj
+.PHONY : core/UI/scenes/MainMenuScene.obj
+
+# target to build an object file
+core/UI/scenes/MainMenuScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/MainMenuScene.cpp.obj
+.PHONY : core/UI/scenes/MainMenuScene.cpp.obj
+
+core/UI/scenes/MainMenuScene.i: core/UI/scenes/MainMenuScene.cpp.i
+.PHONY : core/UI/scenes/MainMenuScene.i
+
+# target to preprocess a source file
+core/UI/scenes/MainMenuScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/MainMenuScene.cpp.i
+.PHONY : core/UI/scenes/MainMenuScene.cpp.i
+
+core/UI/scenes/MainMenuScene.s: core/UI/scenes/MainMenuScene.cpp.s
+.PHONY : core/UI/scenes/MainMenuScene.s
+
+# target to generate assembly for a file
+core/UI/scenes/MainMenuScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/MainMenuScene.cpp.s
+.PHONY : core/UI/scenes/MainMenuScene.cpp.s
+
+core/UI/scenes/SettingsMenuScene.obj: core/UI/scenes/SettingsMenuScene.cpp.obj
+.PHONY : core/UI/scenes/SettingsMenuScene.obj
+
+# target to build an object file
+core/UI/scenes/SettingsMenuScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/SettingsMenuScene.cpp.obj
+.PHONY : core/UI/scenes/SettingsMenuScene.cpp.obj
+
+core/UI/scenes/SettingsMenuScene.i: core/UI/scenes/SettingsMenuScene.cpp.i
+.PHONY : core/UI/scenes/SettingsMenuScene.i
+
+# target to preprocess a source file
+core/UI/scenes/SettingsMenuScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/SettingsMenuScene.cpp.i
+.PHONY : core/UI/scenes/SettingsMenuScene.cpp.i
+
+core/UI/scenes/SettingsMenuScene.s: core/UI/scenes/SettingsMenuScene.cpp.s
+.PHONY : core/UI/scenes/SettingsMenuScene.s
+
+# target to generate assembly for a file
+core/UI/scenes/SettingsMenuScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/UI/scenes/SettingsMenuScene.cpp.s
+.PHONY : core/UI/scenes/SettingsMenuScene.cpp.s
+
 core/file/Parser.obj: core/file/Parser.cpp.obj
 .PHONY : core/file/Parser.obj
 
@@ -295,6 +367,54 @@ core/file/Parser.s: core/file/Parser.cpp.s
 core/file/Parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.s
 .PHONY : core/file/Parser.cpp.s
+
+core/game/Stages/Stage1.obj: core/game/Stages/Stage1.cpp.obj
+.PHONY : core/game/Stages/Stage1.obj
+
+# target to build an object file
+core/game/Stages/Stage1.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/game/Stages/Stage1.cpp.obj
+.PHONY : core/game/Stages/Stage1.cpp.obj
+
+core/game/Stages/Stage1.i: core/game/Stages/Stage1.cpp.i
+.PHONY : core/game/Stages/Stage1.i
+
+# target to preprocess a source file
+core/game/Stages/Stage1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/game/Stages/Stage1.cpp.i
+.PHONY : core/game/Stages/Stage1.cpp.i
+
+core/game/Stages/Stage1.s: core/game/Stages/Stage1.cpp.s
+.PHONY : core/game/Stages/Stage1.s
+
+# target to generate assembly for a file
+core/game/Stages/Stage1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/game/Stages/Stage1.cpp.s
+.PHONY : core/game/Stages/Stage1.cpp.s
+
+core/game/objects/Player.obj: core/game/objects/Player.cpp.obj
+.PHONY : core/game/objects/Player.obj
+
+# target to build an object file
+core/game/objects/Player.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/game/objects/Player.cpp.obj
+.PHONY : core/game/objects/Player.cpp.obj
+
+core/game/objects/Player.i: core/game/objects/Player.cpp.i
+.PHONY : core/game/objects/Player.i
+
+# target to preprocess a source file
+core/game/objects/Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/game/objects/Player.cpp.i
+.PHONY : core/game/objects/Player.cpp.i
+
+core/game/objects/Player.s: core/game/objects/Player.cpp.s
+.PHONY : core/game/objects/Player.s
+
+# target to generate assembly for a file
+core/game/objects/Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TouhouProject.dir\build.make CMakeFiles/TouhouProject.dir/core/game/objects/Player.cpp.s
+.PHONY : core/game/objects/Player.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -335,6 +455,9 @@ help:
 	@echo ... core/GameEngine.obj
 	@echo ... core/GameEngine.i
 	@echo ... core/GameEngine.s
+	@echo ... core/SceneManager.obj
+	@echo ... core/SceneManager.i
+	@echo ... core/SceneManager.s
 	@echo ... core/StateManager.obj
 	@echo ... core/StateManager.i
 	@echo ... core/StateManager.s
@@ -347,9 +470,21 @@ help:
 	@echo ... core/UI/scenes/GameScene.obj
 	@echo ... core/UI/scenes/GameScene.i
 	@echo ... core/UI/scenes/GameScene.s
+	@echo ... core/UI/scenes/MainMenuScene.obj
+	@echo ... core/UI/scenes/MainMenuScene.i
+	@echo ... core/UI/scenes/MainMenuScene.s
+	@echo ... core/UI/scenes/SettingsMenuScene.obj
+	@echo ... core/UI/scenes/SettingsMenuScene.i
+	@echo ... core/UI/scenes/SettingsMenuScene.s
 	@echo ... core/file/Parser.obj
 	@echo ... core/file/Parser.i
 	@echo ... core/file/Parser.s
+	@echo ... core/game/Stages/Stage1.obj
+	@echo ... core/game/Stages/Stage1.i
+	@echo ... core/game/Stages/Stage1.s
+	@echo ... core/game/objects/Player.obj
+	@echo ... core/game/objects/Player.i
+	@echo ... core/game/objects/Player.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

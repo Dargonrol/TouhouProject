@@ -4,6 +4,8 @@
 
 #ifndef EVENTMANAGER_H
 #define EVENTMANAGER_H
+#include <SDL.h>
+#include "SceneManager.h"
 
 class EventManager {
 private:

@@ -4,8 +4,6 @@
 
 #include "language.h"
 
-#include <SDL.h>
-
 void Language::setLanguageValue(std::string key, std::string &value, const std::string category1, const std::string category2) {
         if (category1 == "labels") {
             if (category2 == "mainMenuScene") {

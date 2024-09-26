@@ -4,15 +4,11 @@
 
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
-#include "UI/scenes/Scene.h"
-
-enum GameState {
-    MAIN_MENU,
-    SETTINGS_MENU,
-    GAMEPLAY,
-    PAUSE,
-    GAME_OVER
-};
+#include "game/stages/States.h"
+#include "UI/scenes/MainMenuScene.h"
+#include "UI/scenes/SettingsMenuScene.h"
+#include "UI/scenes/GameScene.h"
+#include "SceneManager.h"
 
 class StateManager {
 private:
@@ -20,13 +16,13 @@ private:
     StateManager(StateManager const& copy);
     StateManager& operator=(StateManager const& copy);
 
-    int gameState = MAIN_MENU;
+    GameState m_currentState = MAIN_MENU;
+    GameState m_lastState = UNVALID_STATE;
 
 public:
     static StateManager& getInstance();
     void changeStateRequest(GameState state);
-    void changeSceneRequest(SceneID sceneID); // push scene to deque
-    void returnRequest(); // pop scene from deque
+    void returnRequest();
 
     int getState();
 

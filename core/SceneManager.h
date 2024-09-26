@@ -6,18 +6,11 @@
 #define SCENEMANAGER_H
 #include <deque>
 
-#include "UI/scenes/GameScene.h"
-#include "UI/scenes/MainMenuScene.h"
+#include "GameProperties.h"
 #include "UI/scenes/Scene.h"
-#include "UI/scenes/SettingsMenuScene.h"
 
 class SceneManager {
 private:
-    std::deque<Scene*> sceneQueue;
-
-    SDL_Renderer* renderer;
-    SDL_Window* window;
-
     SceneManager() {}
     SceneManager(SceneManager const& copy) {}
     SceneManager& operator=(SceneManager const& copy) { return *this; }
@@ -28,73 +21,67 @@ public:
         return instance;
     }
 
-    static void setWindow(SDL_Window* window) {
-        getInstance().window = window;
-    }
-
-    static void setRenderer(SDL_Renderer* renderer) {
-        getInstance().renderer = renderer;
-    }
-
     void pushScene(Scene* scene) {
-        sceneQueue.push_back(scene);
-    }
-
-    void pushScene(SceneID sceneID) {
-        switch (sceneID) {
-            case MAIN_MENU_SCENE:
-                sceneQueue.push_back(new MainMenuScene(renderer, window));
-                break;
-            case SETTINGS_MENU_SCENE:
-                sceneQueue.push_back(new SettingsMenuScene(renderer, window));
-                break;
-            case PAUSE_SCENE:
-                //sceneQueue.push_back(new PauseScene(renderer, window));
-                break;
-            case GAME_OVER_SCENE:
-                //sceneQueue.push_back(new GameOverScene(renderer, window));
-                break;
-            case GAMEPLAY_SCENE:
-                sceneQueue.push_back(new GameScene(renderer, window));
-                break;
-            default:
-                break;
-        }
+        m_sceneQueue.push_back(scene);
     }
 
     int popScene() {
-        delete sceneQueue.front();
-        sceneQueue.pop_front();
-        return sceneQueue.back()->getID();;
+        delete m_sceneQueue.front();
+        m_sceneQueue.pop_front();
+        return m_sceneQueue.back()->getID();;
     }
 
-    void changeScene(SceneID sceneID) {
-        for (Scene* scene : sceneQueue) {
+    void changeScene(Scene* scene) {
+        for (Scene* scene : m_sceneQueue) {
             delete scene;
         }
-        sceneQueue.clear();
-        pushScene(sceneID);
+        m_sceneQueue.clear();
+        pushScene(scene);
     }
-
 
     void updateSceneQueue(double deltaTime) {
         if (SceneManager::isEmpty()) {
             SDL_LogError(1, "Cannot update scene, queue is empty!");
             return;
         }
-        SDL_SetRenderDrawColor(renderer, 10, 10, 10, 255);
-        SDL_RenderClear(renderer);
-        for (Scene* scene : sceneQueue) {
+        SDL_SetRenderDrawColor(properties.app.renderer, 10, 10, 10, 255);
+        SDL_RenderClear(properties.app.renderer);
+        for (Scene* scene : m_sceneQueue) {
             //SDL_Log(std::to_string(scene->getID()).c_str());
-            scene->update(this->renderer, deltaTime);
+            scene->update(properties.app.renderer, deltaTime);
         }
     }
 
     void renderSceneQueue() {
-        SDL_RenderPresent(renderer); // Update the screen
+        SDL_RenderPresent(properties.app.renderer); // Update the screen
     }
 
-    Scene* getCurrentScene() { return sceneQueue.back(); }
-    bool isEmpty() { return sceneQueue.empty(); }
+    Scene* getCurrentScene() { return m_sceneQueue.back(); }
+    bool isEmpty() { return m_sceneQueue.empty(); }
+
+
+public:
+    void clearTopLayerQueue();
+    void clearUILayerQueue();
+    void clearGameLayerQueue();
+
+    void pushTopLayer(Scene* scene);
+    void pushUILayer(Scene* scene);
+    void pushGameLayer(Scene* scene);
+
+    bool removeTopLayer(const std::string& name);
+    bool removeUILayer(const std::string& name);
+    bool removeGameLayer(const std::string& name);
+
+
+private:
+    void applySceneQueue();
+
+private:
+    std::deque<Scene*> m_sceneQueue;
+
+    std::deque<Scene*> m_topLayerQueue = {};
+    std::deque<Scene*> m_uiLayerQueue = {};
+    std::deque<Scene*> m_gameLayerQueue = {};
 };
 #endif //SCENEMANAGER_H

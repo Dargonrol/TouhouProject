@@ -10,11 +10,16 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "X:/user/programming/projects/projects/TouhouProject/core/EventManager.cpp" "CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/EventManager.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/core/GameEngine.cpp" "CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/GameEngine.cpp.obj.d"
+  "X:/user/programming/projects/projects/TouhouProject/core/SceneManager.cpp" "CMakeFiles/TouhouProject.dir/core/SceneManager.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/SceneManager.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/core/StateManager.cpp" "CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/StateManager.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/core/UI/elements/Button.cpp" "CMakeFiles/TouhouProject.dir/core/UI/elements/Button.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/UI/elements/Button.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/core/UI/language.cpp" "CMakeFiles/TouhouProject.dir/core/UI/language.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/UI/language.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/GameScene.cpp" "CMakeFiles/TouhouProject.dir/core/UI/scenes/GameScene.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/UI/scenes/GameScene.cpp.obj.d"
+  "X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/MainMenuScene.cpp" "CMakeFiles/TouhouProject.dir/core/UI/scenes/MainMenuScene.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/UI/scenes/MainMenuScene.cpp.obj.d"
+  "X:/user/programming/projects/projects/TouhouProject/core/UI/scenes/SettingsMenuScene.cpp" "CMakeFiles/TouhouProject.dir/core/UI/scenes/SettingsMenuScene.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/UI/scenes/SettingsMenuScene.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/core/file/Parser.cpp" "CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/file/Parser.cpp.obj.d"
+  "X:/user/programming/projects/projects/TouhouProject/core/game/Stages/Stage1.cpp" "CMakeFiles/TouhouProject.dir/core/game/Stages/Stage1.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/game/Stages/Stage1.cpp.obj.d"
+  "X:/user/programming/projects/projects/TouhouProject/core/game/objects/Player.cpp" "CMakeFiles/TouhouProject.dir/core/game/objects/Player.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/core/game/objects/Player.cpp.obj.d"
   "X:/user/programming/projects/projects/TouhouProject/main.cpp" "CMakeFiles/TouhouProject.dir/main.cpp.obj" "gcc" "CMakeFiles/TouhouProject.dir/main.cpp.obj.d"
   )
 

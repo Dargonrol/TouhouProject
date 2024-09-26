@@ -5,6 +5,7 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 #include <string>
+#include <SDL.h>
 
 class Language {
 private:

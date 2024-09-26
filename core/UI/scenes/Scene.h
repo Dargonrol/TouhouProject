@@ -18,29 +18,17 @@ enum SceneID {
 
 class Scene {
 public:
-    virtual SceneID getID() {
-        return ID;
-    }
-    virtual void setID(SceneID id) {
-        ID = id;
-    }
+    virtual SceneID getID() { return ID; }
+    virtual void setID(SceneID id) { ID = id; }
     virtual void update(SDL_Renderer* renderer, double deltaTime) = 0;
     virtual void handleEvents(SDL_Event event) = 0;
+    void setOnReturn(void (*onReturn)());
+    void returnToPreviousScene() { onReturn(); }
+    std::string getName() { return m_name; }
 
 private:
+    std::string m_name;
     SceneID ID = UNVALID_SCENE;
+    void (*onReturn)() = nullptr;
 };
-
-inline const char* SceneID_to_string(SceneID id) {
-    switch(id) {
-        case SceneID::MAIN_MENU_SCENE: return "MAIN_MENU";
-        case SceneID::SETTINGS_MENU_SCENE: return "SETTINGS_MENU";
-        case SceneID::GAMEPLAY_SCENE: return "GAMEPLAY";
-        case SceneID::PAUSE_SCENE: return "PAUSE";
-        case SceneID::GAME_OVER_SCENE: return "GAME_OVER";
-        case SceneID::UNVALID_SCENE: return "UNVALID";
-        default: return "UNKNOWN";
-    }
-}
-
 #endif //SCENE_H

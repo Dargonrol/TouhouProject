@@ -5,9 +5,19 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
 
-#include <chrono>
 #include "EventManager.h"
 #include "SceneManager.h"
+#include "StateManager.h"
+
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include <stdexcept>
+#include <SDL_image.h>
+#include <stdexcept>
+#include <vector>
+
+#include "GameProperties.h"
+#include "file/Parser.h"
 
 class GameEngine {
 public:

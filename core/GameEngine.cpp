@@ -1,21 +1,9 @@
-#include <SDL.h>
-#include <SDL_ttf.h>
-#include <stdexcept>
 #include "GameEngine.h"
-#include "SceneManager.h"
-#include "StateManager.h"
-#include "EventManager.h"
-#include <SDL_image.h>
-#include <stdexcept>
-#include <vector>
-
-#include "GameProperties.h"
-#include "file/Parser.h"
 
 void GameEngine::run() {
-    const double MS_PER_UPDATE = 1000.0 / properties.FPS; // Targeting 60 updates per second (1000ms / 60)
+    const double MS_PER_UPDATE = 16.6667; // Targeting 60 updates per second (1000ms / 60)
 
-    Uint64 previous = SDL_GetPerformanceCounter();
+    double previous = SDL_GetPerformanceCounter();
     double lag = 0.0;
 
     double deltaTime = 0.0;
@@ -36,11 +24,13 @@ void GameEngine::run() {
     double totalRenderTime = 0.0;
     double avgRenderFPS = 0.0;
 
+    double thousend = 1000.0;
+
     StateManager::getInstance().changeStateRequest(MAIN_MENU);
 
     while (eventManager.running) {
-        Uint64 current = SDL_GetPerformanceCounter();
-        deltaTime = (double)((current - previous) * 1000.0 / SDL_GetPerformanceFrequency());
+        double current = SDL_GetPerformanceCounter();
+        deltaTime = (double)((current - previous) * thousend / SDL_GetPerformanceFrequency());
         previous = current;
         lag += deltaTime;
         secondCounter += deltaTime;
@@ -58,8 +48,8 @@ void GameEngine::run() {
         sceneManager.renderSceneQueue(); // Pass deltaTime to render function
 
         // Calculate frame time
-        Uint64 frameEnd = SDL_GetPerformanceCounter();
-        double frameTime = ((frameEnd - current) * 1000.0 / SDL_GetPerformanceFrequency());
+        double frameEnd = SDL_GetPerformanceCounter();
+        auto frameTime = (double)((frameEnd - current) * thousend / SDL_GetPerformanceFrequency());
 
         // Update frame time statistics
         totalFrameTime -= frameTimes[frameIndex];
@@ -74,7 +64,7 @@ void GameEngine::run() {
         // Update render time statistics
         renderCount++;
         totalRenderTime += deltaTime;
-        double elapsedSinceLastRender = (double)((frameEnd - lastRenderTime) * 1000.0 / SDL_GetPerformanceFrequency());
+        auto elapsedSinceLastRender = (double)((frameEnd - lastRenderTime) * thousend / SDL_GetPerformanceFrequency());
         if (elapsedSinceLastRender >= 1000.0) {
             avgRenderFPS = renderCount / (totalRenderTime / 1000.0);
             SDL_Log("Render FPS: %f", avgRenderFPS);
@@ -101,11 +91,6 @@ void GameEngine::run() {
     // GameEngine::~GameEngine(); gets called automatically
     SDL_Quit();
 }
-
-
-
-
-
 
 void GameEngine::setFPS(int fps) {
     properties.FPS = fps;
@@ -174,10 +159,6 @@ void GameEngine::init() {
     SDL_Log("Renderer created.");
 
     SDL_Log("Current Video Driver: %s", SDL_GetCurrentVideoDriver());
-
-    SDL_Log("setting up SceneManager...");
-    SceneManager::setRenderer(properties.app.renderer);
-    SceneManager::setWindow(properties.app.window);
 
     SDL_SetRenderDrawBlendMode(properties.app.renderer, SDL_BLENDMODE_BLEND);
     SDL_DisableScreenSaver();
