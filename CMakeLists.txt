@@ -36,6 +36,8 @@ add_executable(${PROJECT_NAME} main.cpp
         core/game/objects/Player.cpp
         core/game/objects/Player.h
         core/game/objects/GameObject.h
+        core/game/objects/characters/Sylphina.cpp
+        core/game/objects/characters/Sylphina.h
 )
 
 # --- SDL2 SETUP ---

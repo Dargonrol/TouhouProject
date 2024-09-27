@@ -4,6 +4,8 @@
 
 #ifndef UTILITY_H
 #define UTILITY_H
+#include <vector>
+
 #include "GameProperties.h"
 
 template<typename... Args>
@@ -19,5 +21,6 @@ inline int ScreenCenterX() {
 inline int ScreenCenterY() {
     return properties.resolution.height / 2;
 }
+
 
 #endif //UTILITY_H

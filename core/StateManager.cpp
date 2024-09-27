@@ -15,7 +15,7 @@ StateManager &StateManager::getInstance() {
 
 void StateManager::returnRequest() {
     m_currentState = m_lastState;
-    SceneManager::getInstance().getCurrentScene()->returnToPreviousScene();
+    SceneManager::getInstance().getGameLayerTopScene()->returnToPreviousScene();
 }
 
 void StateManager::changeStateRequest(GameState state) {
@@ -23,16 +23,20 @@ void StateManager::changeStateRequest(GameState state) {
     m_currentState = state;
     switch (state) {
         case::MAIN_MENU:
-            SceneManager::getInstance().changeScene(new MainMenuScene());
+            SceneManager::getInstance().clearGameLayerQueue();
+            SceneManager::getInstance().pushGameLayer(new MainMenuScene());
             break;
         case::SETTINGS_MENU:
-            SceneManager::getInstance().changeScene(new SettingsMenuScene());
+            SceneManager::getInstance().clearGameLayerQueue();
+            SceneManager::getInstance().pushGameLayer(new SettingsMenuScene());
             break;
         case::STAGE1:
-            SceneManager::getInstance().changeScene(new GameScene(STAGE1));
+            SceneManager::getInstance().clearGameLayerQueue();
+            SceneManager::getInstance().pushGameLayer(new GameScene(STAGE1));
             break;
         case::STAGE2:
-            SceneManager::getInstance().changeScene(new GameScene(STAGE2));
+            SceneManager::getInstance().clearGameLayerQueue();
+            SceneManager::getInstance().pushGameLayer(new GameScene(STAGE2));
             break;
     }
 }

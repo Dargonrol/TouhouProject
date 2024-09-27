@@ -23,7 +23,7 @@ void EventManager::handleEvents() {
                 break;
 
             default:
-                SceneManager::getInstance().getCurrentScene()->handleEvents(event);
+                SceneManager::getInstance().handleEvents(event);
                 break;
         }
 

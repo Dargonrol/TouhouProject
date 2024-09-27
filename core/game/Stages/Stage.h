@@ -6,9 +6,15 @@
 #define STAGE_H
 
 class Stage {
+public:
+    virtual ~Stage() = default;
 
+    virtual void handleEvents() = 0;
+    virtual void update(double deltaTime) = 0;
+    virtual void render() = 0;
 
-private:
+protected:
+    Stage() = default;
 
 
 };

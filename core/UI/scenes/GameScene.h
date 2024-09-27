@@ -4,28 +4,23 @@
 
 #ifndef GAMESCENE_H
 #define GAMESCENE_H
+#include <memory>
+
 #include "Scene.h"
 #include "../../GameProperties.h"
 #include "../../game/stages/States.h"
-#include "../../StateManager.h"
+#include "../../game/Stages/Stage.h"
 
 class GameScene : public Scene {
 public:
-    GameScene(GameState stage);
+    explicit GameScene(GameState stage);
     void update(SDL_Renderer* renderer, double deltaTime) override;
     void handleEvents(SDL_Event event) override;
-    ~GameScene();
+    void render() override;
 
 private:
-    GameState stage = UNVALID_STATE;
-    SDL_Rect playerRect = {(properties.resolution.height - properties.resolution.height / 8) - 25, (properties.resolution.width / 2) - 25, 50, 50};
-    double playerSpeed = 100;
-    bool moveW = false;
-    bool moveA = false;
-    bool moveS = false;
-    bool moveD = false;
-
-
+    GameState m_stage = UNVALID_STATE;
+    std::unique_ptr<Stage> m_currentStage;
 };
 
 #endif //GAMESCENE_H

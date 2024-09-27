@@ -21,24 +21,6 @@ public:
         return instance;
     }
 
-    void pushScene(Scene* scene) {
-        m_sceneQueue.push_back(scene);
-    }
-
-    int popScene() {
-        delete m_sceneQueue.front();
-        m_sceneQueue.pop_front();
-        return m_sceneQueue.back()->getID();;
-    }
-
-    void changeScene(Scene* scene) {
-        for (Scene* scene : m_sceneQueue) {
-            delete scene;
-        }
-        m_sceneQueue.clear();
-        pushScene(scene);
-    }
-
     void updateSceneQueue(double deltaTime) {
         if (SceneManager::isEmpty()) {
             SDL_LogError(1, "Cannot update scene, queue is empty!");
@@ -46,18 +28,18 @@ public:
         }
         SDL_SetRenderDrawColor(properties.app.renderer, 10, 10, 10, 255);
         SDL_RenderClear(properties.app.renderer);
-        for (Scene* scene : m_sceneQueue) {
+        for (Scene* scene : m_gameLayerQueue) {
             //SDL_Log(std::to_string(scene->getID()).c_str());
             scene->update(properties.app.renderer, deltaTime);
         }
     }
 
     void renderSceneQueue() {
+        for (Scene* scene : m_gameLayerQueue) {
+            scene->render();
+        }
         SDL_RenderPresent(properties.app.renderer); // Update the screen
     }
-
-    Scene* getCurrentScene() { return m_sceneQueue.back(); }
-    bool isEmpty() { return m_sceneQueue.empty(); }
 
 
 public:
@@ -73,13 +55,16 @@ public:
     bool removeUILayer(const std::string& name);
     bool removeGameLayer(const std::string& name);
 
+    bool isEmpty();
+
+    void handleEvents(SDL_Event event);
+    Scene* getGameLayerTopScene();
+
 
 private:
     void applySceneQueue();
 
 private:
-    std::deque<Scene*> m_sceneQueue;
-
     std::deque<Scene*> m_topLayerQueue = {};
     std::deque<Scene*> m_uiLayerQueue = {};
     std::deque<Scene*> m_gameLayerQueue = {};

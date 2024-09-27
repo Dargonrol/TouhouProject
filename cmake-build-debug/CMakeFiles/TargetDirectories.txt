@@ -1,3 +1,0 @@
-X:/user/programming/projects/projects/TouhouProject/cmake-build-debug/CMakeFiles/TouhouProject.dir
-X:/user/programming/projects/projects/TouhouProject/cmake-build-debug/CMakeFiles/edit_cache.dir
-X:/user/programming/projects/projects/TouhouProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir

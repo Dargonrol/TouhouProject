@@ -21,6 +21,7 @@ public:
     virtual SceneID getID() { return ID; }
     virtual void setID(SceneID id) { ID = id; }
     virtual void update(SDL_Renderer* renderer, double deltaTime) = 0;
+    virtual void render() = 0;
     virtual void handleEvents(SDL_Event event) = 0;
     void setOnReturn(void (*onReturn)());
     void returnToPreviousScene() { onReturn(); }

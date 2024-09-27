@@ -70,4 +70,24 @@ bool SceneManager::removeGameLayer(const std::string& name) {
     return false;
 }
 
+void SceneManager::handleEvents(SDL_Event event)  {
+    if (SceneManager::isEmpty()) {
+        SDL_LogError(1, "Cannot handle events, queue is empty!");
+        return;
+    }
+    for (Scene* scene : m_gameLayerQueue) {
+        scene->handleEvents(event);
+    }
+}
 
+bool SceneManager::isEmpty() {
+    return m_gameLayerQueue.empty();
+}
+
+Scene* SceneManager::getGameLayerTopScene() {
+    if (m_gameLayerQueue.empty()) {
+        SDL_LogError(1, "Cannot get top scene, queue is empty!");
+        return nullptr;
+    }
+    return m_gameLayerQueue.back();
+}

@@ -36,10 +36,9 @@ void GameEngine::run() {
         secondCounter += deltaTime;
 
         // Process input
-        eventManager.handleEvents();
-
         // Update game logic
         while (lag >= MS_PER_UPDATE) {
+            eventManager.handleEvents();
             sceneManager.updateSceneQueue(deltaTime); // Pass deltaTime to update function
             lag -= MS_PER_UPDATE;
         }
