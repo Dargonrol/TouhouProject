@@ -5,13 +5,17 @@
 #include "Sylphina.h"
 
 #include <cmath>
-#include <stdexcept>
 #include <utility>
 
+#include "../../collision.h"
 #include "../../../GameProperties.h"
 
 Sylphina::Sylphina() : Player() {
-    m_ModelRect = {10, 10, 300, 300};
+    m_ModelRect = {100, 100, 100, 100};
+    m_position[0] = m_ModelRect.x;
+    m_position[1] = m_ModelRect.y;
+    m_size[0] = m_ModelRect.w;
+    m_size[1] = m_ModelRect.h;
 }
 void Sylphina::addVelocity(const Eigen::Vector2d& vel) {
     m_velocity = m_velocity + vel;
@@ -30,6 +34,13 @@ void Sylphina::setSpeedMultiplier(double speedMultiplier) {
 }
 
 void Sylphina::update(double deltaTime) {
+    // collision in stage1?
+    // set pos not to last pos but to the egde of the window
+    if (collision::checkCollisionWindow(*this)) {
+        SDL_Log("Window collision detected!");
+        setPosition(getLastPosition());
+        return;
+    }
     m_previousPos = m_position;
     Eigen::Vector2d normalizedPlayerVelocity = m_playerVelocity;
     normalizedPlayerVelocity.normalize();

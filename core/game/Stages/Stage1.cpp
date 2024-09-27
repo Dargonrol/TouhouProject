@@ -8,6 +8,7 @@
 #include <SDL_keyboard.h>
 #include <SDL_log.h>
 
+#include "../collision.h"
 #include "../objects/characters/Sylphina.h"
 
 Stage1::Stage1() : Stage() {
@@ -40,7 +41,7 @@ std::vector<GameObject*> Stage1::getObjects() {
 
 Sylphina* Stage1::getPlayer() {
     for (const auto& object : m_objects) {
-        if (object->getType() == "Player") {
+        if (object->getType() == object_types::PLAYER) {
             return dynamic_cast<Sylphina*>(object);
         }
     }
@@ -64,13 +65,13 @@ void Stage1::render(float alpha) {
 }
 
 void Stage1::handleEvents(SDL_Event event) {
-    /*
     const Uint8* state = SDL_GetKeyboardState(nullptr);
-    m_pressed_W = state[SDL_SCANCODE_W];
-    m_pressed_A = state[SDL_SCANCODE_A];
-    m_pressed_S = state[SDL_SCANCODE_S];
-    m_pressed_D = state[SDL_SCANCODE_D];
-    */
+    if (state[SDL_SCANCODE_LSHIFT]) {
+        getPlayer()->setSpeedMultiplier(getPlayer()->getDefaultSpeedMultiplier() * 0.5);
+    } else {
+        getPlayer()->setSpeedMultiplier(getPlayer()->getDefaultSpeedMultiplier());
+    }
+
     if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
         if (event.key.keysym.sym == SDLK_w) {
             getPlayer()->addPlayerVelocity({0, -1});

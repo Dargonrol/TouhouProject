@@ -23,7 +23,6 @@ public:
     void render(float alpha) override;
 
 private:
-    Eigen::Vector2d m_previousPos = {0, 0};
     Eigen::Vector2d m_playerVelocity = {0, 0};
 };
 #endif //SYLPHINA_H
