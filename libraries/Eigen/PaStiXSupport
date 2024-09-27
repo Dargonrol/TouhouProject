@@ -29,7 +29,7 @@ extern "C" {
   * It provides the two following main factorization classes:
   * - class PastixLLT : a supernodal, parallel LLt Cholesky factorization.
   * - class PastixLDLT: a supernodal, parallel LDLt Cholesky factorization.
-  * - class PastixLU : a supernodal, parallel LU factorization (optimized for a symmetric pattern).
+  * - class PastixLU : a supernodal, parallel LU factorization (optimized for a symmetric patterns).
   * 
   * \code
   * #include <Eigen/PaStiXSupport>

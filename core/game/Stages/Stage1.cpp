@@ -85,6 +85,9 @@ void Stage1::handleEvents(SDL_Event event) {
         if (event.key.keysym.sym == SDLK_d) {
             getPlayer()->addPlayerVelocity({1, 0});
         }
+        if (event.key.keysym.sym == SDLK_x) {
+            getPlayer()->radialAttack();
+        }
     }
     if (event.type == SDL_KEYUP && event.key.repeat == 0) {
         if (event.key.keysym.sym == SDLK_w) {

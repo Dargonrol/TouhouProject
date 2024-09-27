@@ -225,11 +225,11 @@ void IncompleteLUT<Scalar,StorageIndex>::analyzePattern(const _MatrixType& amat)
   // Compute the Fill-reducing permutation
   // Since ILUT does not perform any numerical pivoting,
   // it is highly preferable to keep the diagonal through symmetric permutations.
-  // To this end, let's symmetrize the pattern and perform AMD on it.
+  // To this end, let's symmetrize the patterns and perform AMD on it.
   SparseMatrix<Scalar,ColMajor, StorageIndex> mat1 = amat;
   SparseMatrix<Scalar,ColMajor, StorageIndex> mat2 = amat.transpose();
-  // FIXME for a matrix with nearly symmetric pattern, mat2+mat1 is the appropriate choice.
-  //       on the other hand for a really non-symmetric pattern, mat2*mat1 should be preferred...
+  // FIXME for a matrix with nearly symmetric patterns, mat2+mat1 is the appropriate choice.
+  //       on the other hand for a really non-symmetric patterns, mat2*mat1 should be preferred...
   SparseMatrix<Scalar,ColMajor, StorageIndex> AtA = mat2 + mat1;
   AMDOrdering<StorageIndex> ordering;
   ordering(AtA,m_P);

@@ -312,7 +312,7 @@ class SparseQR : public SparseSolverBase<SparseQR<_MatrixType,_OrderingType> >
   * \warning The matrix \a mat must be in compressed mode (see SparseMatrix::makeCompressed()).
   * 
   * In this step, the fill-reducing permutation is computed and applied to the columns of A
-  * and the column elimination tree is computed as well. Only the sparsity pattern of \a mat is exploited.
+  * and the column elimination tree is computed as well. Only the sparsity patterns of \a mat is exploited.
   * 
   * \note In this step it is assumed that there is no empty row in the matrix \a mat.
   */
@@ -353,7 +353,7 @@ void SparseQR<MatrixType,OrderingType>::analyzePattern(const MatrixType& mat)
 /** \brief Performs the numerical QR factorization of the input matrix
   * 
   * The function SparseQR::analyzePattern(const MatrixType&) must have been called beforehand with
-  * a matrix having the same sparsity pattern than \a mat.
+  * a matrix having the same sparsity patterns than \a mat.
   * 
   * \param mat The sparse column-major matrix
   */
@@ -471,10 +471,10 @@ void SparseQR<MatrixType,OrderingType>::factorize(const MatrixType& mat)
       if(itp) tval(curIdx) = itp.value();
       else    tval(curIdx) = Scalar(0);
       
-      // Compute the pattern of Q(:,k)
+      // Compute the patterns of Q(:,k)
       if(curIdx > nonzeroCol && mark(curIdx) != col ) 
       {
-        Qidx(nzcolQ) = curIdx;  // Add this row to the pattern of Q,
+        Qidx(nzcolQ) = curIdx;  // Add this row to the patterns of Q,
         mark(curIdx) = col;     // and mark it as visited
         nzcolQ++;
       }
@@ -506,7 +506,7 @@ void SparseQR<MatrixType,OrderingType>::factorize(const MatrixType& mat)
           StorageIndex iQ = StorageIndex(itq.row());
           if (mark(iQ) != col)
           {
-            Qidx(nzcolQ++) = iQ;  // Add this row to the pattern of Q,
+            Qidx(nzcolQ++) = iQ;  // Add this row to the patterns of Q,
             mark(iQ) = col;       // and mark it as visited
           }
         }

@@ -320,7 +320,7 @@ class Array
   * a fixed-size 1D array of 4 complex floats.
   *
   * With \cpp11, template alias are also defined for common sizes.
-  * They follow the same pattern as above except that the scalar type suffix is replaced by a
+  * They follow the same patterns as above except that the scalar type suffix is replaced by a
   * template parameter, i.e.:
   *   - `ArrayRowsCols<Type>` where `Rows` and `Cols` can be \c 2,\c 3,\c 4, or \c X for fixed or dynamic size.
   *   - `ArraySize<Type>` where `Size` can be \c 2,\c 3,\c 4 or \c X for fixed or dynamic size 1D arrays.

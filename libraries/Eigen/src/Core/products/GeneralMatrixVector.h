@@ -288,7 +288,7 @@ EIGEN_DEVICE_FUNC EIGEN_DONT_INLINE void general_matrix_vector_product<Index,Lhs
  * This algorithm processes 4 rows at once that allows to both reduce
  * the number of load/stores of the result by a factor 4 and to reduce
  * the instruction dependency. Moreover, we know that all bands have the
- * same alignment pattern.
+ * same alignment patterns.
  *
  * Mixing type logic:
  *  - alpha is always a complex (or converted to a complex)

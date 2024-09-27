@@ -73,7 +73,7 @@ public:
       m_indexPtr(j) = CurNz; 
       
       visited(j) = j; // Do not include the diagonal element
-      // Add the pattern of row/column j of A to A+At
+      // Add the patterns of row/column j of A to A+At
       for (typename MatrixType::InnerIterator it(A,j); it; ++it)
       {
         StorageIndex idx = it.index(); // Get the row index (for column major) or column index (for row major)
@@ -84,7 +84,7 @@ public:
           CurNz++; 
         }
       }
-      //Add the pattern of row/column j of At to A+At
+      //Add the patterns of row/column j of At to A+At
       for (typename MatrixType::InnerIterator it(At, j); it; ++it)
       {
         StorageIndex idx = it.index(); 

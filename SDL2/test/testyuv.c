@@ -26,7 +26,7 @@ static SDL_bool is_packed_yuv_format(Uint32 format)
     return format == SDL_PIXELFORMAT_YUY2 || format == SDL_PIXELFORMAT_UYVY || format == SDL_PIXELFORMAT_YVYU;
 }
 
-/* Create a surface with a good pattern for verifying YUV conversion */
+/* Create a surface with a good patterns for verifying YUV conversion */
 static SDL_Surface *generate_test_pattern(int pattern_size)
 {
     SDL_Surface *pattern = SDL_CreateRGBSurfaceWithFormat(0, pattern_size, pattern_size, 0, SDL_PIXELFORMAT_RGB24);
@@ -310,7 +310,7 @@ int main(int argc, char **argv)
     /* Run automated tests */
     if (should_run_automated_tests) {
         for (i = 0; i < SDL_arraysize(automated_test_params); ++i) {
-            SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Running automated test, pattern size %d, extra pitch %d, intrinsics %s\n",
+            SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Running automated test, patterns size %d, extra pitch %d, intrinsics %s\n",
                         automated_test_params[i].pattern_size,
                         automated_test_params[i].extra_pitch,
                         automated_test_params[i].enable_intrinsics ? "enabled" : "disabled");

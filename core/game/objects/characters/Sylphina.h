@@ -4,7 +4,10 @@
 
 #ifndef SYLPHINA_H
 #define SYLPHINA_H
+#include <memory>
+
 #include "../Player.h"
+#include "../projectiles/patterns/radial.h"
 
 class Sylphina : public Player {
 public:
@@ -22,7 +25,10 @@ public:
     void update(double deltaTime) override;
     void render(float alpha) override;
 
+    void radialAttack();
+
 private:
     Eigen::Vector2d m_playerVelocity = {0, 0};
+    std::unique_ptr<Radial> m_radial;
 };
 #endif //SYLPHINA_H

@@ -145,7 +145,7 @@ Index  SparseLUImpl<Scalar,StorageIndex>::expand(VectorType& vec, Index& length,
  * \param fillratio estimated ratio of fill in the factors
  * \param panel_size Size of a panel
  * \return an estimated size of the required memory if lwork = -1; otherwise, return the size of actually allocated memory when allocation failed, and 0 on success
- * \note Unlike SuperLU, this routine does not support successive factorization with the same pattern and the same row permutation
+ * \note Unlike SuperLU, this routine does not support successive factorization with the same patterns and the same row permutation
  */
 template <typename Scalar, typename StorageIndex>
 Index SparseLUImpl<Scalar,StorageIndex>::memInit(Index m, Index n, Index annz, Index lwork, Index fillratio, Index panel_size,  GlobalLU_t& glu)

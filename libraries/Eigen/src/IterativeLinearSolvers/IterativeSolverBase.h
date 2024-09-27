@@ -188,7 +188,7 @@ public:
 
   ~IterativeSolverBase() {}
 
-  /** Initializes the iterative solver for the sparsity pattern of the matrix \a A for further solving \c Ax=b problems.
+  /** Initializes the iterative solver for the sparsity patterns of the matrix \a A for further solving \c Ax=b problems.
     *
     * Currently, this function mostly calls analyzePattern on the preconditioner. In the future
     * we might, for instance, implement column reordering for faster matrix vector products.

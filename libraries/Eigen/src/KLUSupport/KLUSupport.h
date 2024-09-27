@@ -193,7 +193,7 @@ class KLU : public SparseSolverBase<KLU<_MatrixType> >
 
     /** Performs a numeric decomposition of \a matrix
       *
-      * The given matrix must has the same sparcity than the matrix on which the pattern anylysis has been performed.
+      * The given matrix must has the same sparcity than the matrix on which the patterns anylysis has been performed.
       *
       * \sa analyzePattern(), compute()
       */

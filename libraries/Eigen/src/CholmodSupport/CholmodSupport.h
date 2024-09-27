@@ -277,7 +277,7 @@ class CholmodBase : public SparseSolverBase<Derived>
       return derived();
     }
 
-    /** Performs a symbolic decomposition on the sparsity pattern of \a matrix.
+    /** Performs a symbolic decomposition on the sparsity patterns of \a matrix.
       *
       * This function is particularly useful when solving for several problems having the same structure.
       *
@@ -301,7 +301,7 @@ class CholmodBase : public SparseSolverBase<Derived>
 
     /** Performs a numeric decomposition of \a matrix
       *
-      * The given matrix must have the same sparsity pattern as the matrix on which the symbolic decomposition has been performed.
+      * The given matrix must have the same sparsity patterns as the matrix on which the symbolic decomposition has been performed.
       *
       * \sa analyzePattern()
       */

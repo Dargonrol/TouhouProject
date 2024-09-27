@@ -105,7 +105,7 @@ class IncompleteCholesky : public SparseSolverBase<IncompleteCholesky<Scalar,_Up
       */
     void setInitialShift(RealScalar shift) { m_initialShift = shift; }
 
-    /** \brief Computes the fill reducing permutation vector using the sparsity pattern of \a mat
+    /** \brief Computes the fill reducing permutation vector using the sparsity patterns of \a mat
       */
     template<typename MatrixType>
     void analyzePattern(const MatrixType& mat)
@@ -124,7 +124,7 @@ class IncompleteCholesky : public SparseSolverBase<IncompleteCholesky<Scalar,_Up
     /** \brief Performs the numerical factorization of the input matrix \a mat
       *
       * The method analyzePattern() or compute() must have been called beforehand
-      * with a matrix having the same pattern.
+      * with a matrix having the same patterns.
       *
       * \sa compute(), analyzePattern()
       */

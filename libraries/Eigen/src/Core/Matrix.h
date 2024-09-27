@@ -467,7 +467,7 @@ class Matrix
   * a fixed-size vector of 4 complex floats.
   *
   * With \cpp11, template alias are also defined for common sizes.
-  * They follow the same pattern as above except that the scalar type suffix is replaced by a
+  * They follow the same patterns as above except that the scalar type suffix is replaced by a
   * template parameter, i.e.:
   *   - `MatrixSize<Type>` where `Size` can be \c 2,\c 3,\c 4 for fixed size square matrices or \c X for dynamic size.
   *   - `MatrixXSize<Type>` and `MatrixSizeX<Type>` where `Size` can be \c 2,\c 3,\c 4 for hybrid dynamic/fixed matrices.

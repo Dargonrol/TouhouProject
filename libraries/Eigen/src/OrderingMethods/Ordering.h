@@ -20,7 +20,7 @@ namespace internal {
 /** \internal
   * \ingroup OrderingMethods_Module
   * \param[in] A the input non-symmetric matrix
-  * \param[out] symmat the symmetric pattern A^T+A from the input matrix \a A.
+  * \param[out] symmat the symmetric patterns A^T+A from the input matrix \a A.
   * FIXME: The values should not be considered here
   */
 template<typename MatrixType> 
@@ -58,7 +58,7 @@ class AMDOrdering
     template <typename MatrixType>
     void operator()(const MatrixType& mat, PermutationType& perm)
     {
-      // Compute the symmetric pattern
+      // Compute the symmetric patterns
       SparseMatrix<typename MatrixType::Scalar, ColMajor, StorageIndex> symm;
       internal::ordering_helper_at_plus_a(mat,symm); 
     

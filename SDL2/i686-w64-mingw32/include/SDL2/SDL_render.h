@@ -106,7 +106,7 @@ typedef enum
 } SDL_ScaleMode;
 
 /**
- * The access pattern allowed for a texture.
+ * The access patterns allowed for a texture.
  */
 typedef enum
 {

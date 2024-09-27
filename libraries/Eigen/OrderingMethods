@@ -51,14 +51,14 @@
   * ordering(A, perm); // Call AMD
   * \endcode
   * 
-  * \note Some of these methods (like AMD or METIS), need the sparsity pattern 
+  * \note Some of these methods (like AMD or METIS), need the sparsity patterns
   * of the input matrix to be symmetric. When the matrix is structurally unsymmetric, 
-  * Eigen computes internally the pattern of \f$A^T*A\f$ before calling the method.
+  * Eigen computes internally the patterns of \f$A^T*A\f$ before calling the method.
   * If your matrix is already symmetric (at leat in structure), you can avoid that
   * by calling the method with a SelfAdjointView type.
   * 
   * \code
-  *  // Call the ordering on the pattern of the lower triangular matrix A
+  *  // Call the ordering on the patterns of the lower triangular matrix A
   * ordering(A.selfadjointView<Lower>(), perm);
   * \endcode
   */

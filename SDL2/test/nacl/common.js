@@ -10,7 +10,7 @@ var isTest = false;
 // "Debug" NaCl module.
 var isRelease = true;
 
-// Javascript module pattern:
+// Javascript module patterns:
 //   see http://en.wikipedia.org/wiki/Unobtrusive_JavaScript#Namespaces
 // In essence, we define an anonymous function which is immediately called and
 // returns a new object. The new object contains only the exported definitions;

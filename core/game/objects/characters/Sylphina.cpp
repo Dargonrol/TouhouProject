@@ -9,6 +9,7 @@
 
 #include "../../collision.h"
 #include "../../../GameProperties.h"
+#include "../projectiles/patterns/radial.h"
 
 Sylphina::Sylphina() : Player() {
     m_ModelRect = {100, 100, 100, 100};
@@ -18,11 +19,10 @@ Sylphina::Sylphina() : Player() {
     m_size[1] = m_ModelRect.h;
 }
 void Sylphina::addVelocity(const Eigen::Vector2d& vel) {
-    m_velocity = m_velocity + vel;
+    m_velocity = Eigen::Vector2d(m_velocity + vel);
 }
-
 void Sylphina::remVelocity(const Eigen::Vector2d& vel) {
-    m_velocity = m_velocity - vel;
+    m_velocity = Eigen::Vector2d(m_velocity - vel);
 }
 
 void Sylphina::setVelocity(Eigen::Vector2d vel) {
@@ -36,6 +36,9 @@ void Sylphina::setSpeedMultiplier(double speedMultiplier) {
 void Sylphina::update(double deltaTime) {
     // collision in stage1?
     // set pos not to last pos but to the egde of the window
+    if (m_radial != nullptr) {
+        m_radial->update(deltaTime);
+    }
     if (collision::checkCollisionWindow(*this)) {
         SDL_Log("Window collision detected!");
         setPosition(getLastPosition());
@@ -44,7 +47,7 @@ void Sylphina::update(double deltaTime) {
     m_previousPos = m_position;
     Eigen::Vector2d normalizedPlayerVelocity = m_playerVelocity;
     normalizedPlayerVelocity.normalize();
-    m_position += (m_velocity + (normalizedPlayerVelocity * m_speedMultiplier)) * deltaTime;
+    m_position += Eigen::Vector2d((m_velocity + (normalizedPlayerVelocity * m_speedMultiplier)) * deltaTime);
 }
 
 void Sylphina::render(float alpha) {
@@ -56,12 +59,28 @@ void Sylphina::render(float alpha) {
     m_ModelRect.y = static_cast<int> (std::round(interpolatedY));
     SDL_SetRenderDrawColor(properties.app.renderer, 0, 100, 50, 255);
     SDL_RenderFillRect(properties.app.renderer, &m_ModelRect);
+
+    if (m_radial != nullptr) {
+        m_radial->render(alpha);
+    }
 }
 
 void Sylphina::addPlayerVelocity(const Eigen::Vector2d& vel) {
-    m_playerVelocity = m_playerVelocity + vel;
+    m_playerVelocity = Eigen::Vector2d(m_playerVelocity + vel);
 }
 
 void Sylphina::remPlayerVelocity(const Eigen::Vector2d& vel) {
-    m_playerVelocity = m_playerVelocity - vel;
+    m_playerVelocity = Eigen::Vector2d(m_playerVelocity - vel);
+}
+
+void Sylphina::radialAttack() {
+    if (m_radial == nullptr) {
+        m_radial = std::make_unique<Radial>(m_position);
+    } else {
+        m_radial.reset();
+    }
+    m_radial->setCount(6);
+    m_radial->setObject(object_types::BULLET);
+    m_radial->setSpeed(600.0);
+    m_radial->spawnObjects();
 }

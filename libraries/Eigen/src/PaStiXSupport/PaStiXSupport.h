@@ -393,12 +393,12 @@ bool PastixBase<Base>::_solve_impl(const MatrixBase<Rhs> &b, MatrixBase<Dest> &x
   * 
   * This class is used to solve the linear systems A.X = B with a supernodal LU 
   * factorization in the PaStiX library. The matrix A should be squared and nonsingular
-  * PaStiX requires that the matrix A has a symmetric structural pattern. 
+  * PaStiX requires that the matrix A has a symmetric structural patterns.
   * This interface can symmetrize the input matrix otherwise. 
   * The vectors or matrices X and B can be either dense or sparse.
   * 
   * \tparam _MatrixType the type of the sparse matrix A, it must be a SparseMatrix<>
-  * \tparam IsStrSym Indicates if the input matrix has a symmetric pattern, default is false
+  * \tparam IsStrSym Indicates if the input matrix has a symmetric patterns, default is false
   * NOTE : Note that if the analysis and factorization phase are called separately, 
   * the input matrix will be symmetrized at each call, hence it is advised to 
   * symmetrize the matrix in a end-user program and set \p IsStrSym to true
@@ -440,9 +440,9 @@ class PastixLU : public PastixBase< PastixLU<_MatrixType> >
       grabMatrix(matrix, temp);
       Base::compute(temp);
     }
-    /** Compute the LU symbolic factorization of \p matrix using its sparsity pattern. 
+    /** Compute the LU symbolic factorization of \p matrix using its sparsity patterns.
       * Several ordering methods can be used at this step. See the PaStiX user's manual. 
-      * The result of this operation can be used with successive matrices having the same pattern as \p matrix
+      * The result of this operation can be used with successive matrices having the same patterns as \p matrix
       * \sa factorize()
       */
     void analyzePattern(const MatrixType& matrix)
@@ -454,7 +454,7 @@ class PastixLU : public PastixBase< PastixLU<_MatrixType> >
     }
 
     /** Compute the LU supernodal factorization of \p matrix
-      * WARNING The matrix \p matrix should have the same structural pattern 
+      * WARNING The matrix \p matrix should have the same structural patterns
       * as the same used in the analysis phase.
       * \sa analyzePattern()
       */ 
@@ -551,8 +551,8 @@ class PastixLLT : public PastixBase< PastixLLT<_MatrixType, _UpLo> >
       Base::compute(temp);
     }
 
-     /** Compute the LL^T symbolic factorization of \p matrix using its sparsity pattern
-      * The result of this operation can be used with successive matrices having the same pattern as \p matrix
+     /** Compute the LL^T symbolic factorization of \p matrix using its sparsity patterns
+      * The result of this operation can be used with successive matrices having the same patterns as \p matrix
       * \sa factorize()
       */
     void analyzePattern(const MatrixType& matrix)
@@ -635,8 +635,8 @@ class PastixLDLT : public PastixBase< PastixLDLT<_MatrixType, _UpLo> >
       Base::compute(temp);
     }
 
-    /** Compute the LDL^T symbolic factorization of \p matrix using its sparsity pattern
-      * The result of this operation can be used with successive matrices having the same pattern as \p matrix
+    /** Compute the LDL^T symbolic factorization of \p matrix using its sparsity patterns
+      * The result of this operation can be used with successive matrices having the same patterns as \p matrix
       * \sa factorize()
       */
     void analyzePattern(const MatrixType& matrix)

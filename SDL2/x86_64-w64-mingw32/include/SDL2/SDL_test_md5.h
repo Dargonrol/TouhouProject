@@ -36,7 +36,7 @@
  ** Revised (for MD5): RLR 4/27/91                                    **
  **   -- G modified to have y&~z instead of y&z                       **
  **   -- FF, GG, HH modified to add in last register done             **
- **   -- Access pattern: round 2 works mod 5, round 3 works mod 3     **
+ **   -- Access patterns: round 2 works mod 5, round 3 works mod 3     **
  **   -- distinct additive constant for each step                     **
  **   -- round 4 added, working mod 7                                 **
  ***********************************************************************

@@ -1064,7 +1064,7 @@ static IndexType find_ordering /* return the number of garbage collections */
 
     }
 
-    /* === Compute pivot row pattern ==================================== */
+    /* === Compute pivot row patterns ==================================== */
 
     /* get starting location for this new merged row */
     pivot_row_start = pfree ;
@@ -1076,14 +1076,14 @@ static IndexType find_ordering /* return the number of garbage collections */
     /* in merged pivot row */
     Col [pivot_col].shared1.thickness = -pivot_col_thickness ;
 
-    /* pivot row is the union of all rows in the pivot column pattern */
+    /* pivot row is the union of all rows in the pivot column patterns */
     cp = &A [Col [pivot_col].start] ;
     cp_end = cp + Col [pivot_col].length ;
     while (cp < cp_end)
     {
       /* get a row */
       row = *cp++ ;
-      COLAMD_DEBUG4 (("Pivot col pattern %d %d\n", Row[row].is_alive(), row)) ;
+      COLAMD_DEBUG4 (("Pivot col patterns %d %d\n", Row[row].is_alive(), row)) ;
       /* skip if row is dead */
       if (Row[row].is_dead())
       {
@@ -1148,7 +1148,7 @@ static IndexType find_ordering /* return the number of garbage collections */
 
     /* Here begins the computation of the approximate degree.  The column */
     /* score is the sum of the pivot row "length", plus the size of the */
-    /* set differences of each row in the column minus the pattern of the */
+    /* set differences of each row in the column minus the patterns of the */
     /* pivot row itself.  The column ("thickness") itself is also */
     /* excluded from the column score (we thus use an approximate */
     /* external degree). */
@@ -1179,7 +1179,7 @@ static IndexType find_ordering /* return the number of garbage collections */
       COLAMD_ASSERT (Col[col].is_alive() && col != pivot_col) ;
       COLAMD_DEBUG3 (("Col: %d\n", col)) ;
 
-      /* clear tags used to construct pivot row pattern */
+      /* clear tags used to construct pivot row patterns */
       col_thickness = -Col [col].shared1.thickness ;
       COLAMD_ASSERT (col_thickness > 0) ;
       Col [col].shared1.thickness = col_thickness ;

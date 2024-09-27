@@ -103,7 +103,7 @@ private:
   * SparseMatrix<double> A;
   * SparseLU<SparseMatrix<double>, COLAMDOrdering<int> >   solver;
   * // fill A and b;
-  * // Compute the ordering permutation vector from the structural pattern of A
+  * // Compute the ordering permutation vector from the structural patterns of A
   * solver.analyzePattern(A); 
   * // Compute the numerical factorization 
   * solver.factorize(A); 
@@ -228,7 +228,7 @@ class SparseLU : public SparseSolverBase<SparseLU<_MatrixType,_OrderingType> >, 
     
     inline Index rows() const { return m_mat.rows(); }
     inline Index cols() const { return m_mat.cols(); }
-    /** Indicate that the pattern of the input matrix is symmetric */
+    /** Indicate that the patterns of the input matrix is symmetric */
     void isSymmetric(bool sym)
     {
       m_symmetricmode = sym;

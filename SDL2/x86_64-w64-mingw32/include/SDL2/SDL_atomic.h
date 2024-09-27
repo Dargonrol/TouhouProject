@@ -163,7 +163,7 @@ extern __inline void SDL_CompilerBarrier(void);
  * Memory barriers are designed to prevent reads and writes from being
  * reordered by the compiler and being seen out of order on multi-core CPUs.
  *
- * A typical pattern would be for thread A to write some data and a flag, and
+ * A typical patterns would be for thread A to write some data and a flag, and
  * for thread B to read the flag and get the data. In this case you would
  * insert a release barrier between writing the data and the flag,
  * guaranteeing that the data write completes no later than the flag is
@@ -171,7 +171,7 @@ extern __inline void SDL_CompilerBarrier(void);
  * and reading the data, to ensure that all the reads associated with the flag
  * have completed.
  *
- * In this pattern you should always see a release barrier paired with an
+ * In this patterns you should always see a release barrier paired with an
  * acquire barrier and you should gate the data reads/writes with a single
  * flag variable.
  *
