@@ -11,12 +11,19 @@ public:
     Sylphina();
     ~Sylphina() override = default;
 
-    void addVelocity(std::pmr::vector<double> vel);
-    void setVelocity(std::pmr::vector<double> vel);
+    void addVelocity(const Eigen::Vector2d& vel);
+    void setVelocity(Eigen::Vector2d vel);
     void setSpeedMultiplier(double speedMultiplier);
-    void remVelocity(std::pmr::vector<double> vel);
+    void remVelocity(const Eigen::Vector2d& vel);
+
+    void addPlayerVelocity(const Eigen::Vector2d& vel);
+    void remPlayerVelocity(const Eigen::Vector2d& vel);
 
     void update(double deltaTime) override;
-    void render() override;
+    void render(float alpha) override;
+
+private:
+    Eigen::Vector2d m_previousPos = {0, 0};
+    Eigen::Vector2d m_playerVelocity = {0, 0};
 };
 #endif //SYLPHINA_H

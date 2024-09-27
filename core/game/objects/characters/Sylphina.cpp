@@ -13,29 +13,15 @@
 Sylphina::Sylphina() : Player() {
     m_ModelRect = {10, 10, 300, 300};
 }
-void Sylphina::addVelocity(std::pmr::vector<double> vel) {
-    if (m_velocity.size() != vel.size()) {
-        throw std::invalid_argument("Vectors must be the same size for element-wise addition");
-    }
-
-    std::vector<double> result(vel.size());
-    for (size_t i = 0; i < vel.size(); ++i) {
-        m_velocity[i] = m_velocity[i] + vel[i];
-    }
+void Sylphina::addVelocity(const Eigen::Vector2d& vel) {
+    m_velocity = m_velocity + vel;
 }
 
-void Sylphina::remVelocity(std::pmr::vector<double> vel) {
-    if (m_velocity.size() != vel.size()) {
-        throw std::invalid_argument("Vectors must be the same size for element-wise subtraction");
-    }
-
-    std::vector<double> result(vel.size());
-    for (size_t i = 0; i < vel.size(); ++i) {
-        m_velocity[i] = m_velocity[i] - vel[i];
-    }
+void Sylphina::remVelocity(const Eigen::Vector2d& vel) {
+    m_velocity = m_velocity - vel;
 }
 
-void Sylphina::setVelocity(std::pmr::vector<double> vel) {
+void Sylphina::setVelocity(Eigen::Vector2d vel) {
     m_velocity = std::move(vel);
 }
 
@@ -43,20 +29,28 @@ void Sylphina::setSpeedMultiplier(double speedMultiplier) {
     m_speedMultiplier = speedMultiplier;
 }
 
-// playerRect.x -= ceil(playerSpeed * deltaTime / 1000.0);
 void Sylphina::update(double deltaTime) {
-    if (m_velocity.size() != m_position.size()) {
-        throw std::invalid_argument("Vectors must be the same size for element-wise subtraction");
-    }
-    for (size_t i = 0; i < m_velocity.size(); ++i) {
-        m_position[i] += ((m_velocity[i] * m_speedMultiplier) * deltaTime) / 1000.0;
-    }
+    m_previousPos = m_position;
+    Eigen::Vector2d normalizedPlayerVelocity = m_playerVelocity;
+    normalizedPlayerVelocity.normalize();
+    m_position += (m_velocity + (normalizedPlayerVelocity * m_speedMultiplier)) * deltaTime;
 }
 
-void Sylphina::render() {
-    m_ModelRect.x = static_cast<int> (std::round(m_position[0]));
-    m_ModelRect.y = static_cast<int> (std::round(m_position[1]));
+void Sylphina::render(float alpha) {
+    // interpoliate between previous and current position
+    float interpolatedX = m_previousPos[0] * (1.0f - alpha) + m_position[0] * alpha;
+    float interpolatedY = m_previousPos[1] * (1.0f - alpha) + m_position[1] * alpha;
 
+    m_ModelRect.x = static_cast<int> (std::round(interpolatedX));
+    m_ModelRect.y = static_cast<int> (std::round(interpolatedY));
     SDL_SetRenderDrawColor(properties.app.renderer, 0, 100, 50, 255);
     SDL_RenderFillRect(properties.app.renderer, &m_ModelRect);
+}
+
+void Sylphina::addPlayerVelocity(const Eigen::Vector2d& vel) {
+    m_playerVelocity = m_playerVelocity + vel;
+}
+
+void Sylphina::remPlayerVelocity(const Eigen::Vector2d& vel) {
+    m_playerVelocity = m_playerVelocity - vel;
 }

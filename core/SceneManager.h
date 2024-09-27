@@ -34,9 +34,9 @@ public:
         }
     }
 
-    void renderSceneQueue() {
+    void renderSceneQueue(float alpha) {
         for (Scene* scene : m_gameLayerQueue) {
-            scene->render();
+            scene->render(alpha);
         }
         SDL_RenderPresent(properties.app.renderer); // Update the screen
     }

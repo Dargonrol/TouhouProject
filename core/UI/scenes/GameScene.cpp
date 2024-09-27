@@ -21,8 +21,8 @@ GameScene::GameScene(GameState initalStage) : m_stage(initalStage) {
     }
 }
 
-void GameScene::render() {
-    m_currentStage->render();
+void GameScene::render(float alpha) {
+    m_currentStage->render(alpha);
 }
 
 void GameScene::update(SDL_Renderer* renderer, double deltaTime) {
@@ -44,5 +44,5 @@ void GameScene::handleEvents(SDL_Event event) {
                 break;
         }
     }
-    m_currentStage->handleEvents();
+    m_currentStage->handleEvents(event);
 }

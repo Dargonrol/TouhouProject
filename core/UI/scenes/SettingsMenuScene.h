@@ -14,7 +14,7 @@ public:
 
     void update(SDL_Renderer* renderer, double deltaTime) override;
     void handleEvents(SDL_Event event) override;
-    void render() override {};
+    void render(float alpha) override {};
 
 private:
     int i = 0;

@@ -16,7 +16,7 @@ public:
     explicit GameScene(GameState stage);
     void update(SDL_Renderer* renderer, double deltaTime) override;
     void handleEvents(SDL_Event event) override;
-    void render() override;
+    void render(float alpha) override;
 
 private:
     GameState m_stage = UNVALID_STATE;

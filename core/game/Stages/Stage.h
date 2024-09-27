@@ -9,9 +9,9 @@ class Stage {
 public:
     virtual ~Stage() = default;
 
-    virtual void handleEvents() = 0;
+    virtual void handleEvents(SDL_Event event) = 0;
     virtual void update(double deltaTime) = 0;
-    virtual void render() = 0;
+    virtual void render(float alpha) = 0;
 
 protected:
     Stage() = default;

@@ -57,29 +57,46 @@ void Stage1::update(double deltaTime) {
     }
 }
 
-void Stage1::render() {
+void Stage1::render(float alpha) {
     for (const auto& object : m_objects) {
-        object->render();
+        object->render(alpha);
     }
 }
 
-void Stage1::handleEvents() {
+void Stage1::handleEvents(SDL_Event event) {
+    /*
     const Uint8* state = SDL_GetKeyboardState(nullptr);
     m_pressed_W = state[SDL_SCANCODE_W];
     m_pressed_A = state[SDL_SCANCODE_A];
     m_pressed_S = state[SDL_SCANCODE_S];
     m_pressed_D = state[SDL_SCANCODE_D];
-
-    if (m_pressed_W) {
-        getPlayer()->addVelocity({0, -1});
+    */
+    if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
+        if (event.key.keysym.sym == SDLK_w) {
+            getPlayer()->addPlayerVelocity({0, -1});
+        }
+        if (event.key.keysym.sym == SDLK_a) {
+            getPlayer()->addPlayerVelocity({-1, 0});
+        }
+        if (event.key.keysym.sym == SDLK_s) {
+            getPlayer()->addPlayerVelocity({0, 1});
+        }
+        if (event.key.keysym.sym == SDLK_d) {
+            getPlayer()->addPlayerVelocity({1, 0});
+        }
     }
-    if (m_pressed_A) {
-        getPlayer()->addVelocity({-1, 0});
-    }
-    if (m_pressed_S) {
-        getPlayer()->addVelocity({0, 1});
-    }
-    if (m_pressed_D) {
-        getPlayer()->addVelocity({1, 0});
+    if (event.type == SDL_KEYUP && event.key.repeat == 0) {
+        if (event.key.keysym.sym == SDLK_w) {
+            getPlayer()->remPlayerVelocity({0, -1});
+        }
+        if (event.key.keysym.sym == SDLK_a) {
+            getPlayer()->remPlayerVelocity({-1, 0});
+        }
+        if (event.key.keysym.sym == SDLK_s) {
+            getPlayer()->remPlayerVelocity({0, 1});
+        }
+        if (event.key.keysym.sym == SDLK_d) {
+            getPlayer()->remPlayerVelocity({1, 0});
+        }
     }
 }

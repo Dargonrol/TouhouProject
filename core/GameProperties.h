@@ -7,6 +7,14 @@
 
 #include <SDL.h>
 #include "UI/language.h"
+enum FPS_CAP {
+    UNLIMITED = 0,
+    DEFAULT = 60,
+    HIGH = 144,
+    ULTRA = 240,
+    LOW = 30,
+    CUSTOM = -1
+};
 
 struct Resolution {
     int width;
@@ -23,10 +31,7 @@ inline struct Properties {
     Resolution defaultResolution = {800, 600};
     Resolution resolution = {800, 600};
     App app = {nullptr, nullptr};
-    int mainGameLoopUpdateDelay = 1; // how fast the program can at maximum run (not rendering!)
-    int FPS = 144;
-    int frameDelay = (1000 / FPS);
-    const int defaultFPS = 60;
+    FPS_CAP fpsCap = FPS_CAP::DEFAULT;
     Languages language = ENGLISH;
 
 } properties;
@@ -58,6 +63,5 @@ inline struct {
     const std::string canterbury = directories.fonts + "Canterbury/Canterbury.ttf";
     const std::string gotHeroin = directories.fonts + "gotHeroin/Got_Heroin.ttf";
 } fontsDirs;
-
 
 #endif //GAMEPROPERTIES_H

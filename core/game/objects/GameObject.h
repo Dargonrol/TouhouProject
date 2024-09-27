@@ -5,21 +5,21 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 #include <string>
-#include <vector>
+#include <Dense>
 
 class GameObject {
 public:
     virtual ~GameObject() = default;
 
     virtual void update(double deltaTime) = 0;
-    virtual void render() = 0;
+    virtual void render(float alpha) = 0;
 
     virtual std::string getType() {
         return "UNDIFINED OBJECT";
     }
 
 protected:
-    std::pmr::vector<double> m_position = {0.0 , 0.0};
+    Eigen::Vector2d m_position = {0.0 , 0.0};
 
 
 

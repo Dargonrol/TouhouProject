@@ -1,99 +1,73 @@
 #include "GameEngine.h"
+#include <chrono>
+#include <thread>
 
 void GameEngine::run() {
-    const double MS_PER_UPDATE = 16.6667; // Targeting 60 updates per second (1000ms / 60)
-
-    double previous = SDL_GetPerformanceCounter();
-    double lag = 0.0;
-
-    double deltaTime = 0.0;
-
-    const int sampleSize = 100; // Number of frames to average over
-    std::vector<double> frameTimes(sampleSize, 0.0);
-    int frameIndex = 0;
-    double totalFrameTime = 0.0;
-    int frameCount = 0;
-
-    double avgFrameTime = 0.0;
-    double avgFPS = 0.0;
-
-    double secondCounter = 0.0; // Counter to track elapsed time for one second
-
-    Uint64 lastRenderTime = SDL_GetPerformanceCounter();
-    int renderCount = 0;
-    double totalRenderTime = 0.0;
-    double avgRenderFPS = 0.0;
-
-    double thousend = 1000.0;
-
     StateManager::getInstance().changeStateRequest(MAIN_MENU);
 
+    const float FIXED_TIMESTEP = 1.0f / 60.0f;
+    using clock = std::chrono::high_resolution_clock;
+    auto lastTime = clock::now();
+    auto fpsStartTime = lastTime; // Zeitstempel für die FPS-Berechnung
+
+    float accumulator = 0.0f;
+    int frameCount = 0;           // Anzahl der gerenderten Frames
+    int fps = 0;
+    int updateCount = 0;           // Anzahl der Updates
+    int updateFps = 0;             // Update-FPS-Wert
+
+    auto currentTime = clock::now();
+    auto fpsCurrentTime = clock::now();
+    float deltaTime = 0.0f;
+    float alpha;
+
     while (eventManager.running) {
-        double current = SDL_GetPerformanceCounter();
-        deltaTime = (double)((current - previous) * thousend / SDL_GetPerformanceFrequency());
-        previous = current;
-        lag += deltaTime;
-        secondCounter += deltaTime;
+        currentTime = clock::now();
+        std::chrono::duration<float> frameTime = currentTime - lastTime;
+        lastTime = currentTime;
 
-        // Process input
-        // Update game logic
-        while (lag >= MS_PER_UPDATE) {
-            eventManager.handleEvents();
-            sceneManager.updateSceneQueue(deltaTime); // Pass deltaTime to update function
-            lag -= MS_PER_UPDATE;
+        deltaTime = frameTime.count(); // Zeit zwischen den Frames
+        accumulator += deltaTime; // Zeit dem Accumulator hinzufügen
+
+        eventManager.handleEvents(); // Event-Handling
+
+        // Update-Schleife
+        while (accumulator >= FIXED_TIMESTEP) {
+            sceneManager.updateSceneQueue(FIXED_TIMESTEP); // Verwende FIXED_TIMESTEP für Updates
+            accumulator -= FIXED_TIMESTEP;
+
+            updateCount++;  // Zähle die Updates
         }
 
-        // Render scene
-        sceneManager.renderSceneQueue(); // Pass deltaTime to render function
+        // Berechne das Verhältnis für die Interpolation
+        alpha = accumulator / FIXED_TIMESTEP;
 
-        // Calculate frame time
-        double frameEnd = SDL_GetPerformanceCounter();
-        auto frameTime = (double)((frameEnd - current) * thousend / SDL_GetPerformanceFrequency());
 
-        // Update frame time statistics
-        totalFrameTime -= frameTimes[frameIndex];
-        frameTimes[frameIndex] = frameTime;
-        totalFrameTime += frameTime;
+        sceneManager.renderSceneQueue(alpha); // Rendern unter Verwendung von Alpha für Interpolation
 
-        frameIndex = (frameIndex + 1) % sampleSize;
-        if (frameCount < sampleSize) {
-            frameCount++;
+        // FPS-Berechnung: Zähle die Frames
+        frameCount++;
+        // Berechne die verstrichene Zeit seit der letzten FPS-Anzeige (z.B. jede Sekunde)
+        fpsCurrentTime = clock::now();
+        std::chrono::duration<float> fpsDuration = fpsCurrentTime - fpsStartTime;
+        if (fpsDuration.count() >= 1.0f) {  // Wenn eine Sekunde vergangen ist
+            fps = frameCount;               // FPS = Anzahl der gerenderten Frames in einer Sekunde
+            frameCount = 0;                 // Zurücksetzen des Zählers
+            fpsStartTime = fpsCurrentTime;  // FPS-Startzeit aktualisieren
+
+            updateFps = updateCount;           // Update-FPS = Anzahl der Updates in einer Sekunde
+            updateCount = 0;                   // Zurücksetzen des Zählers
+
+            // FPS in der Konsole ausgeben
+            SDL_Log("Render-FPS: %d", fps);
+            SDL_Log("Update-FPS: %d", updateFps);
         }
-
-        // Update render time statistics
-        renderCount++;
-        totalRenderTime += deltaTime;
-        auto elapsedSinceLastRender = (double)((frameEnd - lastRenderTime) * thousend / SDL_GetPerformanceFrequency());
-        if (elapsedSinceLastRender >= 1000.0) {
-            avgRenderFPS = renderCount / (totalRenderTime / 1000.0);
-            SDL_Log("Render FPS: %f", avgRenderFPS);
-            renderCount = 0;
-            totalRenderTime = 0.0;
-            lastRenderTime = frameEnd;
-        }
-
-        // Update statistics every second
-        if (secondCounter >= 1000.0) {
-            avgFrameTime = totalFrameTime / frameCount;
-            avgFPS = 1000.0 / avgFrameTime;
-            SDL_Log("Average Frame Time: %f ms, Average Game Loop FPS: %f", avgFrameTime, avgFPS);
-            secondCounter = 0.0;
-        }
-
-        // Optional: Delay to ensure the game doesn't run too fast
-        if (frameTime < MS_PER_UPDATE) {
-            SDL_Delay((Uint32)(MS_PER_UPDATE - frameTime));
-        }
+        //std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 
     SDL_Log("Quitting...");
     // GameEngine::~GameEngine(); gets called automatically
     SDL_Quit();
-}
-
-void GameEngine::setFPS(int fps) {
-    properties.FPS = fps;
-    properties.frameDelay = 1000 / fps - properties.mainGameLoopUpdateDelay;
 }
 
 void GameEngine::init() {
