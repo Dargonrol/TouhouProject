@@ -33,22 +33,12 @@ add_executable(${PROJECT_NAME} main.cpp
         core/game/Stages/Stage.h
         core/UI/scenes/MainMenuScene.cpp
         core/UI/scenes/SettingsMenuScene.cpp
-        core/game/objects/Player.cpp
-        core/game/objects/Player.h
-        core/game/objects/GameObject.h
-        core/game/objects/characters/Sylphina.cpp
-        core/game/objects/characters/Sylphina.h
         core/game/collision.cpp
         core/game/collision.h
-        core/game/objects/ObjectTypes.h
-        core/game/objects/projectiles/patterns/radial.h
-        core/game/objects/projectiles/Projectile.cpp
-        core/game/objects/projectiles/Projectile.h
-        core/game/objects/createObjects.h
-        core/game/objects/projectiles/Bullet.cpp
-        core/game/objects/projectiles/Bullet.h
         core/game/render/drawing.cpp
         core/game/render/drawing.h
+        core/game/ECS/components.cpp
+        core/game/ECS/ECS.cpp
 )
 
 # --- SDL2 SETUP ---
