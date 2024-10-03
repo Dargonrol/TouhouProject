@@ -33,12 +33,15 @@ add_executable(${PROJECT_NAME} main.cpp
         core/game/Stages/Stage.h
         core/UI/scenes/MainMenuScene.cpp
         core/UI/scenes/SettingsMenuScene.cpp
-        core/game/collision.cpp
-        core/game/collision.h
+        core/game/CollisionHelper.cpp
+        core/game/CollisionHelper.h
         core/game/render/drawing.cpp
         core/game/render/drawing.h
-        core/game/ECS/components.cpp
+        core/game/ECS/Components.h
         core/game/ECS/ECS.cpp
+        core/game/ECS/EntityTypes.h
+        core/game/ECS/ComponentManager.cpp
+        core/game/ECS/ComponentManager.h
 )
 
 # --- SDL2 SETUP ---

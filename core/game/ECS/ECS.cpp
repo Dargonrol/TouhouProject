@@ -4,6 +4,10 @@
 
 #include <bitset>
 #include <cstdint>
+#include <set>
+
+#include "EntityTypes.h"
+#include "Components.h"
 
 namespace ECS
 {
@@ -15,5 +19,16 @@ namespace ECS
     using ComponentID = uint8_t;
     using Signature = std::bitset<MAX_COMPONENTS>;
 
+    struct Entity
+    {
+        Signature signature;
+        EntityID id;
+        EntityType type;
+    };
+
+
+
 
 }
+
+ECS::Entity ent;

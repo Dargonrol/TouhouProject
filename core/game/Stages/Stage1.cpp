@@ -8,7 +8,7 @@
 #include <SDL_keyboard.h>
 #include <SDL_log.h>
 
-#include "../collision.h"
+#include "../CollisionHelper.h"
 #include "../objects/characters/Sylphina.h"
 
 Stage1::Stage1() : Stage() {
