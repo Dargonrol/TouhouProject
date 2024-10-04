@@ -28,7 +28,8 @@ namespace ECS
     {
         NO_ERROR = 0,
         MAXIMUM_CAP_REACHED,
-        ENTITYID_EXCEEDS_CAP
+        ENTITYID_EXCEEDS_CAP,
+        COMPONENT_NON_EXISTING
     };
 }
 #endif //ECS_DEFINESANDCONSTANTS_H

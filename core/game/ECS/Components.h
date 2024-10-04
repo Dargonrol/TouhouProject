@@ -10,11 +10,13 @@
 struct Component
 {
 public:
-    uint8_t component_id;
+   uint8_t component_id = 0;
 };
 
 struct TransformComponent : Component
 {
+    TransformComponent() : Component{1} {}
+
     Eigen::Vector2f position;
     Eigen::Quaternionf rotation;
     Eigen::Vector2f scale; // to scale in x and y
@@ -22,6 +24,7 @@ struct TransformComponent : Component
 
 struct VelocityComponent : Component
 {
+    VelocityComponent() : Component{1} {}
     Eigen::Vector2f velocity;
 };
 

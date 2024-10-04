@@ -13,11 +13,11 @@ class EntityManger
 public:
     EntityManger();
 
-    std::pair<ECS::EntityID, ECS::ErrorCode> createEntity();
+    [[nodiscard]] std::pair<ECS::EntityID, ECS::ErrorCode> createEntity();
     ECS::ErrorCode deleteEntity(ECS::EntityID entity_id);
 
     ECS::ErrorCode setSignature(ECS::EntityID entity_id, ECS::Signature signature);
-    std::pair<ECS::Signature, ECS::ErrorCode> getSignature(ECS::EntityID entity_id);
+    [[nodiscard]] std::pair<ECS::Signature, ECS::ErrorCode> getSignature(ECS::EntityID entity_id);
 
     [[nodiscard]] unsigned int getLivingEntityCount() const;
 
