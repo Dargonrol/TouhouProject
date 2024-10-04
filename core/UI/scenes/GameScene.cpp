@@ -6,7 +6,6 @@
 
 #include <iostream>
 
-#include "../../game/objects/characters/Sylphina.h"
 #include "../../game/Stages/Stage1.h"
 #include "../../StateManager.h"
 

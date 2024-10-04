@@ -61,7 +61,7 @@ struct TrajectoryComponent : Component
 };
 
 // not intended to use outside Shooter.
-struct AttackPatternComponent : Component// like 380° etc.
+struct AttackPatternComponent : Component // like 380° etc.
 {
     int count; // how many entities to create
     std::function<Eigen::Vector2f(int)> placementFunction; // function which takes the nth entity as an argument and returns the relative coordinates to the "calling" entity where it shall place it

@@ -39,9 +39,11 @@ add_executable(${PROJECT_NAME} main.cpp
         core/game/render/drawing.h
         core/game/ECS/Components.h
         core/game/ECS/ECS.cpp
-        core/game/ECS/EntityTypes.h
+        core/game/ECS/ECS_DefinesAndConstants.h
         core/game/ECS/ComponentManager.cpp
         core/game/ECS/ComponentManager.h
+        core/game/ECS/EntityManager.cpp
+        core/game/ECS/EntityManager.h
 )
 
 # --- SDL2 SETUP ---
